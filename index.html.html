@@ -1,0 +1,1637 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Obra · Major Agostinho 350 — Maranguape</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F7F5F2;
+  --surface: #EEEBE6;
+  --card: #FDFCFB;
+  --border: #E0DBD4;
+  --border-strong: #C4BDB4;
+  --ink: #1A1816;
+  --ink-2: #4A4642;
+  --ink-3: #908C88;
+  --accent: #245C38;
+  --accent-light: #E8F2EC;
+  --accent-mid: #3D8A56;
+  --warn: #7A4F1A;
+  --warn-bg: #FDF5E8;
+  --warn-border: #E8CA8A;
+  --done: #2D6B42;
+  --done-bg: #EAF3EE;
+  --radius: 6px;
+  --radius-lg: 10px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--ink); font-family: "DM Sans", sans-serif; font-size: 15px; line-height: 1.6; }
+
+/* HEADER */
+.site-header { background: #111; padding: 0 1.25rem; display: flex; align-items: center; border-bottom: 1px solid #222; position: sticky; top: 0; z-index: 100; min-height: 52px; }
+.header-brand { padding: .6rem 0; display: flex; flex-direction: column; gap: 3px; flex: 1; align-items: flex-start; justify-content: center; }
+.brand-tag { font-family: "DM Mono", monospace; font-size: 10px; color: #555; letter-spacing: .12em; text-transform: uppercase; }
+.brand-title { font-family: "DM Sans", sans-serif; font-weight:300; letter-spacing:.01em; font-weight: 500; font-size: 17px; color: #F2EEE8; letter-spacing: .01em; }
+.brand-sub { font-family: "DM Mono", monospace; font-size: 10px; color: #555; letter-spacing: .06em; }
+.header-stats { display: flex; align-items: center; gap: 1.25rem; padding: 0 1rem; border-left: 1px solid #252525; flex-shrink: 0; }
+.hstat { text-align: center; }
+.hstat-num { font-family: "DM Mono", monospace; font-size: 18px; font-weight: 500; color: #F2EEE8; display: block; }
+.hstat-label { font-size: 10px; color: #555; letter-spacing: .06em; text-transform: uppercase; }
+.progress-strip { height: 3px; background: #E0DBD4; }
+.progress-strip-fill { height: 100%; background: var(--accent-mid); transition: width .4s ease; }
+
+/* TABS */
+.tabs-bar { background: #F0EDE8; border-bottom: 1px solid var(--border); display: flex; padding: 0 1.5rem; gap: 0; }
+.tab-btn { padding: .75rem 1.25rem; font-size: 13px; font-weight: 500; color: var(--ink-3); cursor: pointer; border: none; background: none; border-bottom: 2px solid transparent; margin-bottom: -1px; letter-spacing: .02em; transition: color .15s; font-family: "DM Sans", sans-serif; }
+.tab-btn:hover { color: var(--ink); }
+.tab-btn.on { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* MAIN */
+.main { max-width: 860px; margin: 0 auto; padding: 1.5rem; }
+.tab-panel { display: none; }
+.tab-panel.on { display: block; }
+
+/* ALERT */
+.alert-box { background: var(--warn-bg); border: 1px solid var(--warn-border); border-radius: var(--radius-lg); padding: 1rem 1.25rem; margin-bottom: 1.5rem; }
+.alert-title { font-family: "DM Mono", monospace; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--warn); margin-bottom: .75rem; }
+.alert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 6px; }
+.alert-item { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: var(--warn); background: rgba(255,255,255,.7); border-radius: var(--radius); padding: 7px 10px; border: 1px solid var(--warn-border); }
+.alert-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--warn); margin-top: 5px; flex-shrink: 0; }
+
+/* SECTION DIVIDER */
+.section-divider { display: flex; align-items: center; gap: 10px; margin: 1.5rem 0 1rem; }
+.section-divider-line { flex: 1; height: 1px; background: var(--border); }
+.section-divider-label { font-family: "DM Mono", monospace; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); white-space: nowrap; }
+.section-divider-badge { font-family: "DM Mono", monospace; font-size: 10px; padding: 2px 8px; border-radius: 999px; border: 1px solid; white-space: nowrap; }
+.badge-floor-ground { background: #EAF0FB; color: #1E4B8A; border-color: #9AB8E8; }
+.badge-floor-upper { background: #F2F8FD; color: #2E6EA0; border-color: #B0D8F4; }
+
+/* PHASES */
+.phase { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg); margin-bottom: .75rem; overflow: hidden; transition: box-shadow .15s; }
+.phase:hover { box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+.phase-header { display: flex; align-items: center; gap: 10px; padding: .8rem 1rem; cursor: pointer; user-select: none; }
+.phase-num { font-family: "DM Mono", monospace; font-size: 11px; font-weight: 500; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--surface); color: var(--ink-3); border: 1px solid var(--border); flex-shrink: 0; }
+.phase-num.active-num { background: var(--accent-light); color: var(--accent); border-color: var(--accent-mid); }
+.phase-num.done-num { background: var(--done-bg); color: var(--done); border-color: var(--accent-mid); }
+.phase-num.upper-num { background: #F2F8FD; color: #2E6EA0; border-color: #B0D8F4; }
+.phase-num.upper-active-num { background: #EAF5FC; color: #245A8A; border-color: #5AAAE0; }
+.phase-title { font-size: 14px; font-weight: 500; color: var(--ink); flex: 1; }
+.badge-active { font-family: "DM Mono", monospace; font-size: 10px; padding: 2px 8px; border-radius: 999px; background: var(--accent-light); color: var(--accent); border: 1px solid #B8D4C0; letter-spacing: .04em; }
+.badge-done { font-family: "DM Mono", monospace; font-size: 10px; padding: 2px 8px; border-radius: 999px; background: var(--done-bg); color: var(--done); border: 1px solid var(--accent-mid); letter-spacing: .04em; }
+.badge-upper-active { font-family: "DM Mono", monospace; font-size: 10px; padding: 2px 8px; border-radius: 999px; background: #EAF5FC; color: #245A8A; border: 1px solid #5AAAE0; letter-spacing: .04em; }
+.phase-prog-text { font-family: "DM Mono", monospace; font-size: 11px; color: var(--ink-3); min-width: 40px; text-align: right; }
+.phase-chevron { color: var(--ink-3); font-size: 12px; transition: transform .2s; }
+.phase.open .phase-chevron { transform: rotate(180deg); }
+.phase-bar { height: 2px; background: var(--surface); }
+.phase-bar-fill { height: 100%; background: var(--accent-mid); transition: width .3s; }
+.phase-body { display: none; padding: .5rem 1rem 1rem; }
+.phase.open .phase-body { display: block; }
+.phase.done-phase { opacity: .75; }
+.phase.done-phase .phase-bar-fill { background: var(--accent-mid); }
+
+/* HIGHLIGHT phase (structural milestone) */
+.phase.highlight-phase .phase-header { background: linear-gradient(90deg, #FBF5E8 0%, transparent 100%); border-color: #C8B890; }
+.phase-milestone { font-size: 12px; color: #7A5A1A; background: #FDF8EC; border: 1px solid #E8C86A; border-radius: 4px; padding: 8px 12px; margin: 4px 0 8px; line-height: 1.5; font-style: italic; }
+
+/* ITEM ROWS */
+.item-row { display: flex; align-items: flex-start; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--border); }
+.item-row:last-child { border-bottom: none; }
+.item-row input[type=checkbox] { width: 15px; height: 15px; margin-top: 3px; accent-color: var(--accent); cursor: pointer; flex-shrink: 0; }
+.item-row input[type=checkbox]:disabled { opacity: .5; cursor: default; }
+.item-label { font-size: 13.5px; color: var(--ink-2); line-height: 1.45; flex: 1; cursor: pointer; }
+.item-label.done { text-decoration: line-through; color: var(--ink-3); }
+
+/* CRONO */
+.crono-wrap { overflow-x: auto; border-radius: var(--radius-lg); border: 1px solid var(--border); background: var(--card); }
+.crono-table { width: 100%; border-collapse: collapse; font-size: 12px; min-width: 620px; }
+.crono-table th { background: var(--surface); color: var(--ink-3); font-weight: 500; padding: 8px 10px; text-align: left; border-bottom: 1px solid var(--border); white-space: nowrap; font-family: "DM Mono", monospace; font-size: 11px; letter-spacing: .04em; }
+.crono-table th.week-head { text-align: center; padding: 8px 4px; min-width: 34px; }
+.crono-table td { padding: 5px 10px; border-bottom: 1px solid var(--border); color: var(--ink-2); font-size: 12px; vertical-align: middle; }
+.crono-table tr:last-child td { border-bottom: none; }
+.crono-table td.wk { padding: 4px 3px; }
+.bar { height: 14px; border-radius: 3px; opacity: .85; }
+.crono-floor-row.floor-terreo td { background: #1E3A28; font-family: "DM Mono", monospace; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: #7CBA8E; padding: 8px 10px; border-top: 2px solid #3D8A56; border-bottom: 1px solid #2A4F35; font-weight:500; }
+.crono-floor-row.floor-upper td { background: #1A3A56; font-family: "DM Mono", monospace; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: #C09AE8; padding: 8px 10px; border-top: 2px solid #4A90D4; border-bottom: 1px solid #2A4E6A; font-weight:500; }
+.crono-legend { display: flex; flex-wrap: wrap; gap: 12px; padding: 1rem; border-top: 1px solid var(--border); }
+.leg { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--ink-3); }
+.leg-dot { width: 10px; height: 10px; border-radius: 2px; }
+
+/* INFO */
+.info-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-bottom: 1.5rem; }
+.info-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1rem; }
+.info-card-label { font-family: "DM Mono", monospace; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 4px; }
+.info-card-val { font-family: "DM Sans", sans-serif; font-weight:300; letter-spacing:.01em; font-size: 16px; font-weight: 500; color: var(--ink); }
+.section-label { font-family: "DM Mono", monospace; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); margin-bottom: .75rem; }
+
+/* FOOTER */
+.site-footer { text-align: center; padding: 2rem; font-family: "DM Mono", monospace; font-size: 11px; color: var(--ink-3); border-top: 1px solid var(--border); margin-top: 2rem; }
+
+.progress-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem; margin-bottom: 1.5rem; }
+.progress-card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+.progress-card-title { font-family: "DM Mono", monospace; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+.progress-card-pct { font-family: "DM Sans", sans-serif; font-weight:300; letter-spacing:.01em; font-size: 28px; font-weight: 500; color: var(--accent); }
+.progress-phases { display: grid; gap: 6px; }
+.progress-phase-row { display: flex; align-items: center; gap: 8px; }
+.progress-phase-label { font-size: 12px; color: var(--ink-2); width: 200px; flex-shrink: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.progress-phase-bar-wrap { flex: 1; height: 6px; background: var(--surface); border-radius: 3px; overflow: hidden; }
+.progress-phase-bar-fill { height: 100%; border-radius: 3px; transition: width .4s; }
+.progress-phase-pct { font-family: "DM Mono", monospace; font-size: 10px; color: var(--ink-3); min-width: 30px; text-align: right; }
+.big-bar-wrap { height: 10px; background: var(--surface); border-radius: 5px; overflow: hidden; margin-bottom: .5rem; }
+.big-bar-fill { height: 100%; background: var(--accent-mid); border-radius: 5px; transition: width .6s ease; }
+.progress-note { font-size: 12px; color: var(--ink-3); font-style: italic; margin-top: .5rem; }
+
+.lock-bar { display: flex; align-items: center; gap: 8px; padding: 6px 1.25rem; background: #F7F5F2; border-bottom: 1px solid #EAE6E0; }
+.lock-bar span { font-size: 11px; color: #B8B4AE; font-weight: 300; }
+.lock-btn { font-family: "DM Sans", sans-serif; font-size: 11px; padding: 3px 10px; border-radius: 999px; border: 1px solid #D0CBC4; background: white; color: #4A4642; cursor: pointer; transition: all .15s; }
+.lock-btn:hover { background: #F0EDE8; }
+.lock-btn.unlocked { border-color: #B8D4C0; color: #3D8A56; background: #EAF3EE; }
+.pin-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.35); z-index: 999; display: flex; align-items: center; justify-content: center; }
+.pin-box { background: white; border-radius: 12px; padding: 2rem; width: 280px; box-shadow: 0 8px 32px rgba(0,0,0,.15); }
+.pin-box h3 { font-size: 15px; font-weight: 500; color: #1A1816; margin-bottom: 4px; }
+.pin-box p { font-size: 12px; color: #908C88; margin-bottom: 1.25rem; }
+.pin-input { width: 100%; padding: 10px 12px; border: 1px solid #E0DBD4; border-radius: 6px; font-size: 18px; font-family: "DM Mono", monospace; letter-spacing: .2em; text-align: center; outline: none; transition: border .15s; }
+.pin-input:focus { border-color: #3D8A56; }
+.pin-error { font-size: 12px; color: #C05040; margin-top: 8px; text-align: center; display: none; }
+.pin-actions { display: flex; gap: 8px; margin-top: 1rem; }
+.pin-cancel { flex: 1; padding: 9px; border: 1px solid #E0DBD4; border-radius: 6px; background: white; font-size: 13px; color: #908C88; cursor: pointer; font-family: "DM Sans", sans-serif; }
+.pin-confirm { flex: 1; padding: 9px; border: none; border-radius: 6px; background: #3D8A56; font-size: 13px; color: white; cursor: pointer; font-family: "DM Sans", sans-serif; font-weight: 500; }
+
+/* Private area styling */
+#tab-financeiro.on, #tab-documentos.on {
+  background: #161616;
+  min-height: 100vh;
+  margin: -1.5rem;
+  padding: 1.5rem;
+}
+#tab-financeiro .section-label,
+#tab-documentos .section-label {
+  color: #9A9A9A;
+}
+#tab-financeiro .info-card,
+#tab-documentos .info-card {
+  background: #1E1E1E;
+  border-color: #2C2C2C;
+}
+.private-card {
+  background: #1E1E1E !important;
+  border-color: #2C2C2C !important;
+  color: #D0D0D0 !important;
+}
+.private-header {
+  background: #111111;
+  border-bottom: 1px solid #2C2C2C;
+  padding: .6rem 1.25rem;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.private-header span {
+  font-family: "DM Mono", monospace;
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.private-block {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+  border: 1px solid #2C2C2C;
+}
+.private-body {
+  background: #1E1E1E;
+  padding: 1rem 1.25rem;
+}
+.private-label {
+  font-size: 10px;
+  color: #666666;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  font-family: "DM Mono", monospace;
+}
+.private-val {
+  font-size: 15px;
+  font-weight: 500;
+  color: #EEEEEE;
+  margin-top: 4px;
+}
+.private-val-green { color: #6DC48A !important; }
+.private-val-amber { color: #E0A84A !important; }
+.private-table td {
+  padding: 7px 4px;
+  border-bottom: 1px solid #252525;
+  color: #C0C0C0;
+  font-size: 13px;
+}
+.private-table td:last-child { text-align: right; font-weight: 500; }
+.private-table tr:last-child td { border-bottom: none; }
+.private-section-label {
+  font-family: "DM Mono", monospace;
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #666666;
+  margin: .75rem 0 .4rem;
+}
+.private-total-row {
+  margin-top: .75rem;
+  padding-top: .75rem;
+  border-top: 1px solid #2C2C2C;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media (max-width: 600px) {
+  .header-stats { gap: 1rem; padding: 0 1rem; }
+  .hstat-num { font-size: 15px; }
+  .main { padding: 1rem; }
+  .brand-title { font-size: 14px; }
+  .tabs-bar { padding: 0 .75rem; }
+  .tab-btn { padding: .65rem .75rem; font-size: 12px; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-brand">
+    <img src="data:image/png;base64,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" alt="Granu" style="height:14px;width:auto;max-width:80px;object-fit:contain;flex-shrink:0;display:block;opacity:.85;margin-bottom:3px">
+    <span style="font-size:12px;font-weight:500;color:#D8D4CE;letter-spacing:.01em;line-height:1.2">Reforma · Major Agostinho, 350</span>
+    <span style="font-size:10px;color:#555;font-weight:300;letter-spacing:.01em">Térreo 248m² · 1º Pav. 195m² · Maranguape — CE</span>
+  </div>
+  </div>
+  <div class="header-stats">
+    <div class="hstat"><span class="hstat-num" id="h-pct">47%</span><span class="hstat-label">Progresso real</span></div>
+    <div class="hstat"><span class="hstat-num" id="h-items" style="font-size:14px">0/0</span><span class="hstat-label">Itens</span></div>
+  </div>
+</header>
+<div class="progress-strip"><div class="progress-strip-fill" id="strip" style="width:0%"></div></div>
+
+<div style="background:#F7F5F2;border-bottom:1px solid #EAE6E0;padding:4px 1.25rem;display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap">
+  <div style="display:flex;align-items:center;gap:5px">
+    <div style="width:5px;height:5px;border-radius:50%;background:#A8C8B0;flex-shrink:0"></div>
+    <span style="font-size:11px;color:#B8B4AE;font-weight:300">Térreo · 09/02/2026 – Set–Out 2026</span>
+  </div>
+  <div style="width:1px;height:10px;background:#DDD"></div>
+  <div style="display:flex;align-items:center;gap:5px">
+    <div style="width:5px;height:5px;border-radius:50%;background:#90BCD8;flex-shrink:0"></div>
+    <span style="font-size:11px;color:#B8B4AE;font-weight:300">1º Pav. · 09/03/2026 – Set–Out 2026</span>
+  </div>
+</div>
+<div class="lock-bar" style="justify-content:flex-end">
+  <span id="lock-status" style="display:none"></span>
+  <button class="lock-btn" id="lock-btn" onclick="toggleLock()">Entrar</button>
+</div>
+<div class="pin-overlay" id="pin-overlay" style="display:none">
+  <div class="pin-box">
+    <h3>Acesso restrito</h3>
+    <p>Digite a senha para habilitar edição</p>
+    <input class="pin-input" type="password" id="pin-input" maxlength="10" placeholder="······" onkeydown="if(event.key==='Enter')confirmPin()">
+    <div class="pin-error" id="pin-error">Senha incorreta</div>
+    <div class="pin-actions">
+      <button class="pin-cancel" onclick="closePin()">Cancelar</button>
+      <button class="pin-confirm" onclick="confirmPin()">Confirmar</button>
+    </div>
+  </div>
+</div>
+<nav class="tabs-bar">
+  <button class="tab-btn on" onclick="showTab('checklist')">Checklist</button>
+  <button class="tab-btn" onclick="showTab('crono')">Cronograma</button>
+  <button class="tab-btn" onclick="showTab('info')">Obra</button>
+  <button class="tab-btn" id="tab-btn-financeiro" onclick="showTabProtected('financeiro')">Financeiro</button>
+  <button class="tab-btn" id="tab-btn-documentos" onclick="showTabProtected('documentos')">Documentos</button>
+</nav>
+
+<main class="main">
+
+<div class="tab-panel on" id="tab-checklist">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1.25rem">
+
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1rem 1.25rem">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px">
+        <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)">Térreo · Comercial</span>
+        <span style="font-family:'DM Mono',monospace;font-size:16px;font-weight:500;color:var(--accent)" id="pct-terreo">0%</span>
+      </div>
+      <div style="height:8px;background:var(--surface);border-radius:4px;overflow:hidden">
+        <div id="bar-terreo" style="height:100%;width:0%;background:var(--accent-mid);border-radius:4px;transition:width .5s ease"></div>
+      </div>
+      <div style="font-size:11px;color:var(--ink-3);margin-top:6px;font-family:'DM Mono',monospace" id="items-terreo">0/0 itens</div>
+    </div>
+
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1rem 1.25rem">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px">
+        <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)">1º Pav. · Residencial</span>
+        <span style="font-family:'DM Mono',monospace;font-size:16px;font-weight:500;color:#4A90D4" id="pct-upper">0%</span>
+      </div>
+      <div style="height:8px;background:var(--surface);border-radius:4px;overflow:hidden">
+        <div id="bar-upper" style="height:100%;width:0%;background:#4A90D4;border-radius:4px;transition:width .5s ease"></div>
+      </div>
+      <div style="font-size:11px;color:var(--ink-3);margin-top:6px;font-family:'DM Mono',monospace" id="items-upper">0/0 itens</div>
+    </div>
+
+  </div>
+
+  <div class="alert-box">
+    <div class="alert-title">⚑ Itens a adicionar / confirmar antes de executar</div>
+    <div class="alert-grid">
+      <div class="alert-item"><span class="alert-dot"></span>Chuveirão e arandelas — terraço superior</div>
+      <div class="alert-item"><span class="alert-dot"></span>Armadores de rede — quartos, varandas e sala (superior)</div>
+      <div class="alert-item"><span class="alert-dot"></span>Tomadas extras — revisar pontos com elétrica</div>
+      <div class="alert-item"><span class="alert-dot"></span>Corrimões nos WCs do superior</div>
+    </div>
+  </div>
+  <div style="background:#F4F2EF;border:1px solid #E0DBD4;border-radius:var(--radius-lg);padding:.85rem 1.25rem;margin-bottom:1.25rem">
+    <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#908C88;margin-bottom:.75rem">Complementos / Aditivos: aprovado em 28/04/2026</div>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div style="display:flex;align-items:flex-start;gap:8px;font-size:13px;color:#4A4642">
+        <span style="margin-top:1px;flex-shrink:0;color:#3D8A56">✓</span>
+        <span><strong>Quarto adicional superior (~12m²)</strong> — estrutura completa: laje, vigas, pilares, alvenarias, forro de gesso, 10 pontos elétricos, porta 90cm, porcelanato, esquadria alumínio preto 120x110cm, pintura e acabamento</span>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:8px;font-size:13px;color:#4A4642">
+        <span style="margin-top:1px;flex-shrink:0;color:#908C88">·</span>
+        <span><strong>Impermeabilizações ajustadas</strong> — laje coberta 38m², quarto adicional 26m², depósito superior 14m², caixa d'água 22m², complementos (110m² total)</span>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:8px;font-size:13px;color:#4A4642">
+        <span style="margin-top:1px;flex-shrink:0;color:#908C88">·</span>
+        <span><strong>Coberta em telha cerâmica</strong> — madeiramento complementar + telha retangular cerâmica c/ esbarro (30m²)</span>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:8px;font-size:13px;color:#4A4642">
+        <span style="margin-top:1px;flex-shrink:0;color:#908C88">·</span>
+        <span><strong>Isolamento acústico</strong> — lã de PET/vidro 25–50mm instalada nas 9 salas (105m²)</span>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:8px;font-size:13px;color:#4A4642">
+        <span style="margin-top:1px;flex-shrink:0;color:#908C88">·</span>
+        <span><strong>Individualização elétrica</strong> — complemento material e mão de obra nas 9 salas</span>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:8px;font-size:13px;color:#4A4642">
+        <span style="margin-top:1px;flex-shrink:0;color:#908C88">·</span>
+        <span><strong>Individualização hidrossanitária</strong> — complemento material e mão de obra nas 9 salas</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="phases-container"></div>
+</div>
+
+<div class="tab-panel" id="tab-crono">
+  <div class="section-label" style="margin-bottom:1rem">Cronograma — semanas restantes</div>
+  <div class="crono-wrap"><table class="crono-table" id="crono-table"></table></div>
+</div>
+
+<div class="tab-panel" id="tab-info">
+  <div class="progress-card">
+    <div class="progress-card-header">
+      <span class="progress-card-title">Progresso ponderado da obra</span>
+      <span class="progress-card-pct" id="big-bar-pct">47%</span>
+    </div>
+    <div class="big-bar-wrap"><div class="big-bar-fill" id="big-bar-fill" style="width:47%"></div></div>
+    <p class="progress-note">Progresso calculado pelo peso financeiro e complexidade de cada etapa — etapas estruturais têm maior peso. As 3 etapas concluídas (projetos, demolições e estrutura) equivalem a ~47% do esforço total da obra.</p>
+    <div style="margin-top:1rem">
+      <div class="section-label" style="margin-bottom:.5rem">Por etapa</div>
+      <div class="progress-phases" id="progress-phases-list"></div>
+    </div>
+  </div>
+  <div class="section-label" style="margin-bottom:.75rem">Dados da obra</div>
+
+  <!-- Contratante header -->
+  <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:.85rem 1.25rem;margin-bottom:1rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
+    <div>
+      <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:3px">Contratante</div>
+      <div style="font-size:14px;font-weight:500;color:var(--ink)">Lucia Helena V. Lopes</div>
+      <div style="font-size:12px;color:var(--ink-3);margin-top:2px">Major Agostinho, 350 · Centro · Maranguape — CE</div>
+    </div>
+    <div style="text-align:right">
+      <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:3px">Total estimado das 2 obras</div>
+      <div style="font-size:16px;font-weight:500;color:var(--ink)">R$ 731.047,09</div>
+      <div style="font-size:11px;color:var(--ink-3);margin-top:2px">Térreo R$ 444.913,09 + Superior R$ 286.134,00</div>
+    </div>
+  </div>
+
+  <!-- Linha 1: Térreo -->
+  <div style="border:1px solid #C8D8C0;border-radius:var(--radius-lg);padding:.85rem 1.25rem;margin-bottom:.75rem;background:#F8FCF9">
+    <div style="display:flex;align-items:center;gap:6px;margin-bottom:.6rem">
+      <div style="width:6px;height:6px;border-radius:50%;background:#3D8A56;flex-shrink:0"></div>
+      <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#3D8A56;font-weight:500">Pavimento Térreo · Comercial · 9 salas · 248 m²</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px">
+      <div><div style="font-size:10px;color:#888888;text-transform:uppercase;letter-spacing:.06em;font-family:'DM Mono',monospace">Início</div><div style="font-size:13px;font-weight:500;color:var(--ink);margin-top:2px">09 / 02 / 2026</div></div>
+      <div><div style="font-size:10px;color:#888888;text-transform:uppercase;letter-spacing:.06em;font-family:'DM Mono',monospace">Término estimado</div><div style="font-size:13px;font-weight:500;color:var(--ink);margin-top:2px">Set — Out / 2026</div></div>
+      <div><div style="font-size:10px;color:#888888;text-transform:uppercase;letter-spacing:.06em;font-family:'DM Mono',monospace">Valor estimado</div><div style="font-size:13px;font-weight:500;color:var(--ink);margin-top:2px">R$ 444.913,09</div><div style="font-size:11px;color:var(--ink-3)">incl. aditivo R$ 24.903,80</div></div>
+    </div>
+  </div>
+
+  <!-- Linha 2: Superior -->
+  <div style="border:1px solid #B0CCE4;border-radius:var(--radius-lg);padding:.85rem 1.25rem;margin-bottom:1.5rem;background:#F5F9FD">
+    <div style="display:flex;align-items:center;gap:6px;margin-bottom:.6rem">
+      <div style="width:6px;height:6px;border-radius:50%;background:#4A90D4;flex-shrink:0"></div>
+      <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#3A7EC0;font-weight:500">1º Pavimento · Residencial · 195 m²</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px">
+      <div><div style="font-size:10px;color:#888888;text-transform:uppercase;letter-spacing:.06em;font-family:'DM Mono',monospace">Início</div><div style="font-size:13px;font-weight:500;color:var(--ink);margin-top:2px">09 / 03 / 2026</div></div>
+      <div><div style="font-size:10px;color:#888888;text-transform:uppercase;letter-spacing:.06em;font-family:'DM Mono',monospace">Término estimado</div><div style="font-size:13px;font-weight:500;color:var(--ink);margin-top:2px">Set — Out / 2026</div></div>
+      <div><div style="font-size:10px;color:#888888;text-transform:uppercase;letter-spacing:.06em;font-family:'DM Mono',monospace">Valor estimado</div><div style="font-size:13px;font-weight:500;color:var(--ink);margin-top:2px">R$ 286.134,00</div></div>
+    </div>
+  </div>
+  <div class="section-label" style="margin-top:1.5rem;margin-bottom:.75rem">Progresso da obra</div>
+  <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem;margin-bottom:1rem">
+    <div style="display:flex;align-items:center;justify-content:center;gap:3rem;flex-wrap:wrap">
+
+      <!-- Térreo donut -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:.75rem">
+        <div style="position:relative;width:120px;height:120px">
+          <svg viewBox="0 0 120 120" width="120" height="120" style="transform:rotate(-90deg)">
+            <circle cx="60" cy="60" r="46" fill="none" stroke="#E8F2EC" stroke-width="14"/>
+            <circle cx="60" cy="60" r="46" fill="none" stroke="#3D8A56" stroke-width="14"
+              stroke-dasharray="289" stroke-dashoffset="289"
+              id="donut-terreo" style="transition:stroke-dashoffset 1s ease"/>
+          </svg>
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center">
+            <span style="font-size:20px;font-weight:500;color:#1A1816" id="pct-terreo-label">0%</span>
+            <span style="font-size:9px;color:#908C88;letter-spacing:.04em;text-transform:uppercase;margin-top:1px">concluído</span>
+          </div>
+        </div>
+        <div style="text-align:center">
+          <div style="font-size:12px;font-weight:500;color:#1A1816">Pavimento Térreo</div>
+          <div style="font-size:11px;color:#908C88">Comercial · 248 m²</div>
+        </div>
+      </div>
+
+      <!-- 1º Pav donut -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:.75rem">
+        <div style="position:relative;width:120px;height:120px">
+          <svg viewBox="0 0 120 120" width="120" height="120" style="transform:rotate(-90deg)">
+            <circle cx="60" cy="60" r="46" fill="none" stroke="#D8EDF8" stroke-width="14"/>
+            <circle cx="60" cy="60" r="46" fill="none" stroke="#7A9A7A" stroke-width="14"
+              stroke-dasharray="289" stroke-dashoffset="289"
+              id="donut-upper" style="transition:stroke-dashoffset 1s ease"/>
+          </svg>
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center">
+            <span style="font-size:20px;font-weight:500;color:#1A1816" id="pct-upper-label">0%</span>
+            <span style="font-size:9px;color:#908C88;letter-spacing:.04em;text-transform:uppercase;margin-top:1px">concluído</span>
+          </div>
+        </div>
+        <div style="text-align:center">
+          <div style="font-size:12px;font-weight:500;color:#1A1816">1º Pavimento</div>
+          <div style="font-size:11px;color:#908C88">Residencial · 195 m²</div>
+        </div>
+      </div>
+
+      <!-- Overall donut -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:.75rem">
+        <div style="position:relative;width:120px;height:120px">
+          <svg viewBox="0 0 120 120" width="120" height="120" style="transform:rotate(-90deg)">
+            <circle cx="60" cy="60" r="46" fill="none" stroke="#F0EDE8" stroke-width="14"/>
+            <circle cx="60" cy="60" r="46" fill="none" stroke="#1A1816" stroke-width="14"
+              stroke-dasharray="289" stroke-dashoffset="289"
+              id="donut-total" style="transition:stroke-dashoffset 1s ease"/>
+          </svg>
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center">
+            <span style="font-size:20px;font-weight:500;color:#1A1816" id="pct-total-label">0%</span>
+            <span style="font-size:9px;color:#908C88;letter-spacing:.04em;text-transform:uppercase;margin-top:1px">geral</span>
+          </div>
+        </div>
+        <div style="text-align:center">
+          <div style="font-size:12px;font-weight:500;color:#1A1816">Obra total</div>
+          <div style="font-size:11px;color:#908C88">Ponderado por peso</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="section-label" style="margin-top:1.5rem;margin-bottom:.75rem">Responsável técnico</div>
+  <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem;font-size:14px;color:var(--ink-2);line-height:1.8">
+    <strong>Diego Freire da Silva</strong> · Arquiteto · CAU A242920-9<br>
+    Granu Arquitetura / GP Incorporações · CNPJ 51.132.636/0001-28<br>
+    diegofreirema@gmail.com
+  </div>
+</div>
+
+<div class="tab-panel" id="tab-financeiro">
+  <div id="fin-locked" style="text-align:center;padding:3rem 1rem">
+    <div style="font-size:32px;margin-bottom:.75rem">🔒</div>
+    <div style="font-size:14px;font-weight:500;color:var(--ink);margin-bottom:.5rem">Área restrita</div>
+    <div style="font-size:13px;color:var(--ink-3);margin-bottom:1.25rem">Acesso somente para Granu e contratante</div>
+    <button class="lock-btn" onclick="unlockTab('financeiro')" style="padding:8px 20px;font-size:13px">Entrar com senha</button>
+  </div>
+  <div id="fin-content" style="display:none">
+
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;flex-wrap:wrap;gap:8px">
+      <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#9A9A9A">🔐 Área Restrita · Financeiro</div>
+      <div style="font-size:11px;color:#666666">Major Agostinho, 350 · 2 obras</div>
+    </div>
+
+    <!-- RESUMO TOPO -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:1.5rem">
+      <div class="private-card" style="border-radius:var(--radius-lg);padding:.85rem 1rem;border:1px solid #2C2C2C">
+        <div class="private-label">Total estimado</div>
+        <div class="private-val">R$ 731.047,09</div>
+      </div>
+      <div class="private-card" style="border-radius:var(--radius-lg);padding:.85rem 1rem;border:1px solid #2C2C2C">
+        <div class="private-label">Total pago</div>
+        <div class="private-val private-val-green">R$ 373.146,50</div>
+        <div style="font-size:11px;color:#666666;margin-top:2px">51% do estimado</div>
+      </div>
+      <div class="private-card" style="border-radius:var(--radius-lg);padding:.85rem 1rem;border:1px solid #2C2C2C">
+        <div class="private-label">A vencer</div>
+        <div class="private-val private-val-amber">R$ 357.900,15</div>
+      </div>
+      <div class="private-card" style="border-radius:var(--radius-lg);padding:.85rem 1rem;border:1px solid #1E2A1E">
+        <div class="private-label">Gasto real em obra</div>
+        <div class="private-val" style="color:#6DC48A">R$ 282.970,31</div>
+        <div style="font-size:11px;color:#666666;margin-top:2px">materiais + mão de obra</div>
+      </div>
+    </div>
+
+    <!-- GRÁFICO DONUT FINANCEIRO -->
+    <div class="private-block" style="margin-bottom:1.5rem">
+      <div class="private-header" style="background:#111111;border-bottom:1px solid #2C2C2C;padding:.7rem 1.25rem">
+        <span style="color:#9A9A9A">Distribuição financeira — 2 obras</span>
+      </div>
+      <div class="private-body" style="display:flex;align-items:center;justify-content:center;gap:2rem;flex-wrap:wrap;padding:1.5rem">
+
+        <!-- Donut Térreo -->
+        <div style="display:flex;flex-direction:column;align-items:center;gap:.6rem">
+          <div style="position:relative;width:110px;height:110px">
+            <svg viewBox="0 0 110 110" width="110" height="110" style="transform:rotate(-90deg)">
+              <circle cx="55" cy="55" r="42" fill="none" stroke="#0F2A1A" stroke-width="13"/>
+              <circle cx="55" cy="55" r="42" fill="none" stroke="#6DC48A" stroke-width="13"
+                stroke-dasharray="264" stroke-dashoffset="129" style="transition:stroke-dashoffset 1s ease"/>
+              <circle cx="55" cy="55" r="42" fill="none" stroke="#E0A84A" stroke-width="13"
+                stroke-dasharray="264" stroke-dashoffset="264" stroke-dashoffset="0"
+                style="opacity:0"/>
+            </svg>
+            <!-- pago arc then remaining -->
+            <svg viewBox="0 0 110 110" width="110" height="110" style="position:absolute;top:0;left:0;transform:rotate(-90deg)">
+              <circle cx="55" cy="55" r="42" fill="none" stroke="#6DC48A" stroke-width="13"
+                stroke-dasharray="264" stroke-dashoffset="264"
+                id="fin-donut-t-paid" style="transition:stroke-dashoffset 1.2s ease"/>
+              <circle cx="55" cy="55" r="42" fill="none" stroke="#2C2C2C" stroke-width="13"/>
+            </svg>
+            <svg viewBox="0 0 110 110" width="110" height="110" style="position:absolute;top:0;left:0;transform:rotate(-90deg)">
+              <circle cx="55" cy="55" r="42" fill="none" stroke="#2C2C2C" stroke-width="13"/>
+              <circle cx="55" cy="55" r="42" fill="none" stroke="#6DC48A" stroke-width="13"
+                stroke-dasharray="264" stroke-dashoffset="264"
+                id="fin-donut-terreo-paid" style="transition:stroke-dashoffset 1.2s ease"/>
+            </svg>
+            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center">
+              <span style="font-size:16px;font-weight:500;color:#EEEEEE" id="fin-t-pct">61%</span>
+              <span style="font-size:9px;color:#666666;letter-spacing:.04em">pago</span>
+            </div>
+          </div>
+          <div style="text-align:center">
+            <div style="font-size:11px;font-weight:500;color:#D0D0D0">Térreo</div>
+            <div style="font-size:10px;color:#666666">R$ 273k / R$ 444k</div>
+          </div>
+        </div>
+
+        <!-- Donut Superior -->
+        <div style="display:flex;flex-direction:column;align-items:center;gap:.6rem">
+          <div style="position:relative;width:110px;height:110px">
+            <svg viewBox="0 0 110 110" width="110" height="110" style="transform:rotate(-90deg)">
+              <circle cx="55" cy="55" r="42" fill="none" stroke="#2C2C2C" stroke-width="13"/>
+              <circle cx="55" cy="55" r="42" fill="none" stroke="#7A9A7A" stroke-width="13"
+                stroke-dasharray="264" stroke-dashoffset="264"
+                id="fin-donut-upper-paid" style="transition:stroke-dashoffset 1.4s ease"/>
+            </svg>
+            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center">
+              <span style="font-size:16px;font-weight:500;color:#EEEEEE" id="fin-u-pct">35%</span>
+              <span style="font-size:9px;color:#666666;letter-spacing:.04em">pago</span>
+            </div>
+          </div>
+          <div style="text-align:center">
+            <div style="font-size:11px;font-weight:500;color:#D0D0D0">1º Pavimento</div>
+            <div style="font-size:10px;color:#666666">R$ 100k / R$ 286k</div>
+          </div>
+        </div>
+
+        <!-- Donut Gasto Real -->
+        <div style="display:flex;flex-direction:column;align-items:center;gap:.6rem">
+          <div style="position:relative;width:110px;height:110px">
+            <svg viewBox="0 0 110 110" width="110" height="110" style="transform:rotate(-90deg)">
+              <circle cx="55" cy="55" r="42" fill="none" stroke="#2C2C2C" stroke-width="13"/>
+              <circle cx="55" cy="55" r="42" fill="none" stroke="#E0A84A" stroke-width="13"
+                stroke-dasharray="264" stroke-dashoffset="264"
+                id="fin-donut-gasto" style="transition:stroke-dashoffset 1.6s ease"/>
+            </svg>
+            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center">
+              <span style="font-size:16px;font-weight:500;color:#EEEEEE" id="fin-g-pct">39%</span>
+              <span style="font-size:9px;color:#666666;letter-spacing:.04em">executado</span>
+            </div>
+          </div>
+          <div style="text-align:center">
+            <div style="font-size:11px;font-weight:500;color:#D0D0D0">Gasto real</div>
+            <div style="font-size:10px;color:#666666">R$ 283k / R$ 731k</div>
+          </div>
+        </div>
+
+      </div>
+      <!-- Legend -->
+      <div style="display:flex;gap:1.5rem;justify-content:center;padding:.75rem 1.25rem 1rem;border-top:1px solid #252525;flex-wrap:wrap">
+        <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:#666666"><div style="width:10px;height:10px;border-radius:2px;background:#6DC48A"></div>Pago térreo</div>
+        <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:#666666"><div style="width:10px;height:10px;border-radius:2px;background:#4A90D4"></div>Pago superior</div>
+        <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:#666666"><div style="width:10px;height:10px;border-radius:2px;background:#E0A84A"></div>Gasto real em obra</div>
+        <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:#666666"><div style="width:10px;height:10px;border-radius:2px;background:#2C2C2C"></div>A vencer</div>
+      </div>
+    </div>
+
+    <!-- TÉRREO -->
+    <div class="private-block">
+      <div class="private-header" style="background:#111111;border-bottom:1px solid #222222">
+        <div style="width:6px;height:6px;border-radius:50%;background:#3D8A56"></div>
+        <span style="color:#A0A0A0">Térreo · 9 Salas Comerciais</span>
+      </div>
+      <div class="private-body">
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:1rem">
+          <div style="background:#1A1A1A;border-radius:var(--radius);padding:.75rem">
+            <div style="font-size:10px;color:#666666;text-transform:uppercase;letter-spacing:.06em;font-family:'DM Mono',monospace">Custo estimado</div>
+            <div style="font-size:15px;font-weight:500;color:#EEEEEE;margin-top:4px">R$ 444.913,09</div>
+            <div style="font-size:11px;color:var(--ink-3)">incl. aditivo</div>
+          </div>
+          <div style="background:#141A14;border-radius:var(--radius);padding:.75rem">
+            <div style="font-size:10px;color:#666666;text-transform:uppercase;letter-spacing:.06em;font-family:'DM Mono',monospace">Total pago</div>
+            <div style="font-size:15px;font-weight:500;color:#6DC48A;margin-top:4px">R$ 273.000,00</div>
+          </div>
+          <div style="background:#2A2818;border-radius:var(--radius);padding:.75rem">
+            <div style="font-size:10px;color:#888888;text-transform:uppercase;letter-spacing:.06em;font-family:'DM Mono',monospace">Total restante</div>
+            <div style="font-size:15px;font-weight:500;color:#E0A84A;margin-top:4px">R$ 171.913,09</div>
+          </div>
+        </div>
+        <!-- Parcelas pagas -->
+        <div style="font-size:11px;color:#666666;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.5rem">Parcelas pagas</div>
+        <table style="width:100%;border-collapse:collapse;font-size:13px;margin-bottom:1rem">
+          <tr style="border-bottom:1px solid var(--border)">
+            <td style="padding:6px 4px;color:#C0C0C0">1ª Parcela — Entrada 10%</td>
+            <td style="padding:6px 4px;color:#666666;font-size:11px">19/jan</td>
+            <td style="padding:6px 4px;text-align:right;font-weight:500;color:#6DC48A">R$ 42.000,00</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border)">
+            <td style="padding:6px 4px;color:#C0C0C0">2ª Parcela — 25%</td>
+            <td style="padding:6px 4px;color:#666666;font-size:11px">22/jan</td>
+            <td style="padding:6px 4px;text-align:right;font-weight:500;color:#6DC48A">R$ 105.000,00</td>
+          </tr>
+          <tr>
+            <td style="padding:6px 4px;color:#C0C0C0">3ª Parcela — 30%</td>
+            <td style="padding:6px 4px;color:#666666;font-size:11px">10/04/2026</td>
+            <td style="padding:6px 4px;text-align:right;font-weight:500;color:#6DC48A">R$ 126.000,00</td>
+          </tr>
+        </table>
+        <!-- Próximos -->
+        <div style="font-size:11px;color:#666666;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.5rem">Próximos pagamentos previstos</div>
+        <table style="width:100%;border-collapse:collapse;font-size:13px">
+          <tr style="border-bottom:1px solid var(--border)">
+            <td style="padding:6px 4px;color:#C0C0C0">4ª Parcela — 25%</td>
+            <td style="padding:6px 4px;color:#666666;font-size:11px">Jul / 2026</td>
+            <td style="padding:6px 4px;text-align:right;color:#E0A84A;font-weight:500">R$ 105.002,32</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border)">
+            <td style="padding:6px 4px;color:#C0C0C0">5ª Parcela — 5%</td>
+            <td style="padding:6px 4px;color:#666666;font-size:11px">Set / 2026</td>
+            <td style="padding:6px 4px;text-align:right;color:#E0A84A;font-weight:500">R$ 21.000,46</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border)">
+            <td style="padding:6px 4px;color:#C0C0C0">6ª Parcela — 5% + Aditivo</td>
+            <td style="padding:6px 4px;color:#666666;font-size:11px">Out / 2026 · entrega</td>
+            <td style="padding:6px 4px;text-align:right;color:#E0A84A;font-weight:500">R$ 45.904,26</td>
+          </tr>
+        </table>
+        <div style="margin-top:.75rem;padding-top:.75rem;border-top:1px solid #252525;display:flex;justify-content:space-between">
+          <span style="font-size:12px;color:#666666">Total a vencer</span>
+          <span style="font-size:13px;font-weight:500;color:#E0A84A">R$ 171.907,05</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUPERIOR -->
+    <div class="private-block">
+      <div class="private-header" style="background:#111111;border-bottom:1px solid #1A3050">
+        <div style="width:6px;height:6px;border-radius:50%;background:#4A90D4"></div>
+        <span style="color:#909090">1º Pavimento · Residencial</span>
+      </div>
+      <div class="private-body">
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:1rem">
+          <div style="background:#1A1A1A;border-radius:var(--radius);padding:.75rem">
+            <div style="font-size:10px;color:#666666;text-transform:uppercase;letter-spacing:.06em;font-family:'DM Mono',monospace">Custo estimado</div>
+            <div style="font-size:15px;font-weight:500;color:#EEEEEE;margin-top:4px">R$ 286.134,00</div>
+          </div>
+          <div style="background:#141A14;border-radius:var(--radius);padding:.75rem">
+            <div style="font-size:10px;color:#666666;text-transform:uppercase;letter-spacing:.06em;font-family:'DM Mono',monospace">Total pago</div>
+            <div style="font-size:15px;font-weight:500;color:#6DC48A;margin-top:4px">R$ 100.146,50</div>
+          </div>
+          <div style="background:#2A2818;border-radius:var(--radius);padding:.75rem">
+            <div style="font-size:10px;color:#888888;text-transform:uppercase;letter-spacing:.06em;font-family:'DM Mono',monospace">Total restante</div>
+            <div style="font-size:15px;font-weight:500;color:#E0A84A;margin-top:4px">R$ 185.987,50</div>
+          </div>
+        </div>
+        <div style="font-size:11px;color:#666666;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.5rem">Parcelas pagas</div>
+        <table style="width:100%;border-collapse:collapse;font-size:13px;margin-bottom:1rem">
+          <tr style="border-bottom:1px solid var(--border)">
+            <td style="padding:6px 4px;color:#C0C0C0">1ª Parcela — Entrada 10%</td>
+            <td style="padding:6px 4px;color:#666666;font-size:11px">09/03/2026</td>
+            <td style="padding:6px 4px;text-align:right;font-weight:500;color:#6DC48A">R$ 28.613,00</td>
+          </tr>
+          <tr>
+            <td style="padding:6px 4px;color:#C0C0C0">2ª Parcela — 25%</td>
+            <td style="padding:6px 4px;color:#666666;font-size:11px">30/03/2026</td>
+            <td style="padding:6px 4px;text-align:right;font-weight:500;color:#6DC48A">R$ 71.533,50</td>
+          </tr>
+        </table>
+        <div style="font-size:11px;color:#666666;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.5rem">Próximos pagamentos previstos</div>
+        <table style="width:100%;border-collapse:collapse;font-size:13px">
+          <tr style="border-bottom:1px solid var(--border)">
+            <td style="padding:6px 4px;color:#C0C0C0">3ª Parcela — 30%</td>
+            <td style="padding:6px 4px;color:#666666;font-size:11px">01/06/2026</td>
+            <td style="padding:6px 4px;text-align:right;color:#E0A84A;font-weight:500">R$ 85.840,20</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border)">
+            <td style="padding:6px 4px;color:#C0C0C0">4ª Parcela — 25%</td>
+            <td style="padding:6px 4px;color:#666666;font-size:11px">Jul — Ago / 2026</td>
+            <td style="padding:6px 4px;text-align:right;color:#E0A84A;font-weight:500">R$ 71.533,50</td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border)">
+            <td style="padding:6px 4px;color:#C0C0C0">5ª Parcela — 5%</td>
+            <td style="padding:6px 4px;color:#666666;font-size:11px">Set / 2026</td>
+            <td style="padding:6px 4px;text-align:right;color:#E0A84A;font-weight:500">R$ 14.306,70</td>
+          </tr>
+          <tr>
+            <td style="padding:6px 4px;color:#C0C0C0">6ª Parcela — 5%</td>
+            <td style="padding:6px 4px;color:#666666;font-size:11px">Out / 2026 · entrega</td>
+            <td style="padding:6px 4px;text-align:right;color:#E0A84A;font-weight:500">R$ 14.306,70</td>
+          </tr>
+        </table>
+        <div style="margin-top:.75rem;padding-top:.75rem;border-top:1px solid #252525;display:flex;justify-content:space-between">
+          <span style="font-size:12px;color:#666666">Total a vencer</span>
+          <span style="font-size:13px;font-weight:500;color:#E0A84A">R$ 185.987,10</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESUMO GERAL + GASTO REAL -->
+      <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#888888;margin-bottom:.75rem">Resumo geral — 2 obras</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px">
+        <div style="background:#2A2A2A;border-radius:var(--radius);padding:.75rem">
+          <div style="font-size:10px;color:#888888;text-transform:uppercase;letter-spacing:.06em;font-family:'DM Mono',monospace">Total estimado</div>
+          <div style="font-size:15px;font-weight:500;color:#F0F0F0;margin-top:4px">R$ 731.047,09</div>
+        </div>
+        <div style="background:#1E2A1E;border-radius:var(--radius);padding:.75rem">
+          <div style="font-size:10px;color:#888888;text-transform:uppercase;letter-spacing:.06em;font-family:'DM Mono',monospace">Total pago</div>
+          <div style="font-size:15px;font-weight:500;color:#6DC48A;margin-top:4px">R$ 373.146,50</div>
+        </div>
+        <div style="background:#2A2818;border-radius:var(--radius);padding:.75rem">
+          <div style="font-size:10px;color:#888888;text-transform:uppercase;letter-spacing:.06em;font-family:'DM Mono',monospace">Total a vencer</div>
+          <div style="font-size:15px;font-weight:500;color:#E0A84A;margin-top:4px">R$ 357.900,15</div>
+        </div>
+        <div style="background:#2A2818;border-radius:var(--radius);padding:.75rem;border:1px solid #2C2A18">
+          <div style="font-size:10px;color:#666666;text-transform:uppercase;letter-spacing:.06em;font-family:'DM Mono',monospace">Gasto real em obra</div>
+          <div style="font-size:15px;font-weight:500;color:#E0A84A;margin-top:4px">R$ 282.970,31</div>
+          <div style="font-size:11px;color:#888888;margin-top:2px">materiais + mão de obra</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="tab-panel" id="tab-documentos">
+  <div id="doc-locked" style="text-align:center;padding:3rem 1rem">
+    <div style="font-size:32px;margin-bottom:.75rem">🔒</div>
+    <div style="font-size:14px;font-weight:500;color:var(--ink);margin-bottom:.5rem">Área restrita</div>
+    <div style="font-size:13px;color:var(--ink-3);margin-bottom:1.25rem">Acesso somente para Granu e contratante</div>
+    <button class="lock-btn" onclick="unlockTab('documentos')" style="padding:8px 20px;font-size:13px">Entrar com senha</button>
+  </div>
+  <div id="doc-content" style="display:none">
+
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;flex-wrap:wrap;gap:8px">
+      <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#9A9A9A">🔐 Área Restrita · Documentos</div>
+    </div>
+
+    <!-- CONTRATOS -->
+    <div class="private-block" style="margin-bottom:1.25rem">
+      <div class="private-header" style="background:#111111;border-bottom:1px solid #2C2C2C">
+        <span style="color:#9A9A9A">Contratos</span>
+      </div>
+      <div class="private-body" style="display:flex;flex-direction:column;gap:.75rem">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding:.5rem 0;border-bottom:1px solid #252525">
+          <div>
+            <div style="font-size:13px;font-weight:500;color:#EEEEEE">Contrato · Pavimento Térreo</div>
+            <div style="font-size:11px;color:#666666;margin-top:2px">Reforma 9 salas comerciais · assinado</div>
+          </div>
+          <a href="https://drive.google.com/file/d/1tx9PiJQ7YOxJvFO97dmlKYxPif34JFiK/view?usp=drive_link" id="doc-link-1" target="_blank" style="font-size:11px;padding:5px 14px;border-radius:999px;background:#1A2A1A;border:1px solid #222222;color:#6DC48A;text-decoration:none;white-space:nowrap">Abrir ↗</a>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding:.5rem 0">
+          <div>
+            <div style="font-size:13px;font-weight:500;color:#EEEEEE">Contrato · 1º Pavimento</div>
+            <div style="font-size:11px;color:#666666;margin-top:2px">Reforma residencial · assinado</div>
+          </div>
+          <a href="https://drive.google.com/file/d/1x5c3ZA4W-M4kcsrtK-TYUaHZzwsk_hlj/view?usp=drive_link" id="doc-link-2" target="_blank" style="font-size:11px;padding:5px 14px;border-radius:999px;background:#1A2A1A;border:1px solid #222222;color:#6DC48A;text-decoration:none;white-space:nowrap">Abrir ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ADITIVOS -->
+    <div class="private-block">
+      <div class="private-header" style="background:#111111;border-bottom:1px solid #2C2C2C">
+        <span style="color:#9A9A9A">Aditivos</span>
+      </div>
+      <div class="private-body">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding:.5rem 0">
+          <div>
+            <div style="font-size:13px;font-weight:500;color:#EEEEEE">Aditivo · Complementos 28/04/2026</div>
+            <div style="font-size:11px;color:#666666;margin-top:2px">Ajustes / supressão e adição · R$ 24.903,80</div>
+          </div>
+          <a href="https://drive.google.com/file/d/1XzsPGKc45zejQt9qaMrWs6wufp8nbq2Q/view?usp=drive_link" id="doc-link-3" target="_blank" style="font-size:11px;padding:5px 14px;border-radius:999px;background:#1A2A1A;border:1px solid #222222;color:#6DC48A;text-decoration:none;white-space:nowrap">Abrir ↗</a>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+</div>
+
+</main>
+<footer class="site-footer">Granu Arquitetura e Construção · Arquiteto Diego Freire · Fortaleza — CE</footer>
+
+<script>
+// ─── FASES ───────────────────────────────────────────────────────────────────
+const phases = [
+
+  // ── PAVIMENTO TÉRREO ──────────────────────────────────────────────────────
+  {floor:"terreo", id:1, label:"1ª Etapa — Projetos e planejamento técnico", done:true, items:[
+    "Orçamento técnico paramétrico com adequações e ajustes",
+    "Projetos complementares (Elétrico / Hidrossanitário / Climatização / SPDA)",
+    "Relatório de condição de vizinhança com relatório fotográfico",
+    "Projeto estrutural / memorial de cálculo",
+    "Memorial descritivo / cronograma geral / planejamento de execução",
+    "ART de execução",
+    "Gestão junto à liberação de obra / Alvará / Prefeitura",
+    "Placa de obra 1,20x1,00m / pranchas / material gráfico",
+  ]},
+
+  {floor:"terreo", id:2, label:"2ª Etapa — Serviços preliminares e demolições", done:true, items:[
+    "Mobilização inicial / proteção de áreas / organização de canteiro",
+    "Ferramentas, equipamentos, EPIs e acessórios",
+    "Demolição de pisos e revestimentos cerâmicos (35m²)",
+    "Recorte de laje existente — fachada 3,30x1,20m (2x térreo + coberta)",
+    "Demolição de laje existente 10m x 4,50m",
+    "Demolição de escada existente",
+    "Carga manual / retirada de entulho / caçambas 12m³",
+  ]},
+
+  {floor:"terreo", id:3, label:"3ª Etapa — Estrutura e preparação", done:true, highlight:true,
+   milestone:"Marco estrutural da reforma — demolição total de laje, execução de nova laje pré-fabricada nervurada com EPS, escada em concreto armado CA50, complemento estrutural de 88m² com pilares, vigas, piso morto e contrapiso.",
+   items:[
+    "Laje pré-fabricada nervurada com EPS — 40m² (fornecimento e execução)",
+    "Escada de acesso 1º pav. em alvenaria / armadura CA50 / concreto armado (5,7m²)",
+    "Regularização de base para recebimento de piso (198,9m²)",
+    "Contrapiso cimentado — traço 1:4, esp. 1,5cm (198,9m²)",
+    "Locação de andaimes, plataformas e escoras (60 dias)",
+    "Regularização e ajuste de calçada (10m²)",
+    "Complemento 88m²: baldrame em tijolo dobrado e concreto",
+    "Complemento 88m²: fundação em pedra",
+    "Complemento 88m²: aterro com compactação mecânica",
+    "Complemento: pilares e vigas em concreto armado (70m²)",
+    "Complemento: laje nervurada com EPS (88m²)",
+    "Complemento: piso morto em concreto simples — esp. 5cm (88m²)",
+    "Complemento: contrapiso em argamassa — esp. 3cm regularizado (88m²)",
+  ]},
+
+  {floor:"terreo", id:4, label:"4ª Etapa — Hidrossanitário", active:true, items:[
+    "Pontos de água fria — 23 pontos",
+    "Pontos de esgoto e ralos — 31 pontos",
+    "Ponto de gás copa",
+    "Pontos de ar condicionado prévio — 9 salas + recepção (10 pontos)",
+    "Caixa d'água em fibra de vidro 1.000L (2 unidades)",
+    "Bacia de louça branca c/ caixa acoplada — 2 unidades",
+    "Bancada / pia em granito copa 1,80x0,50m",
+    "Bancada em granito p/ lavatório c/ louça e acessórios (2 unidades)",
+    "Ducha higiênica cromada instalada (2 unidades)",
+    "Engates cromados instalados (5 unidades)",
+    "Testes de pressão e estanqueidade",
+  ]},
+
+  {floor:"terreo", id:5, label:"5ª Etapa — Elétrico e luminotécnico", items:[
+    "Pontos de iluminação teto — painéis / spots / embutidos (32 pontos)",
+    "Arandelas / iluminação parede (12 pontos)",
+    "Pontos de fita LED — sanca / perfil (7m)",
+    "Interruptores simples / duplo / three-way (27 unidades)",
+    "Pontos de tomadas variadas (66 pontos)",
+    "Infraestrutura elétrica para ar condicionado tipo split — 9 salas",
+    "Pontos extras de tomadas (conforme revisão)",
+    "Teste de continuidade e aterramento",
+  ]},
+
+  {floor:"terreo", id:6, label:"6ª Etapa — Rebocos e paredes (concluído: reboco)", items:[
+    "Reboco + emboço paredes internas (475m²) ✓",
+    "Reboco fino + regularização de alvenarias (475m²) ✓",
+    "Parede de alvenaria de vedação — complemento das salas (77m²) ✓",
+    "Emassamento de paredes internas — 2 demãos c/ massa PVA (475m²)",
+    "Pintura acrílica cor Atena Coral — paredes (475m²)",
+    "Aplicação de texturas e acabamento (30m²)",
+    "Pintura acrílica teto branco neve fosco (225m²)",
+    "Pintura teto hall — cimento queimado / túnel de concreto (38m²)",
+  ]},
+
+  {floor:"terreo", id:7, label:"7ª Etapa — Pisos e revestimentos", items:[
+    "Porcelanato amadeirado acetinado 26x106cm Carvalho Natural Biancogres (240m²)",
+    "Revestimento cimentício acetinado Ombre Secret Garden 7,7x30,5cm — WCs (16m²)",
+    "Revestimento cerâmico fachada Tradição 23x11cm Lepri ou similar (57m²)",
+    "Argamassa ACIII Porcelanato Top 10 Cinza (100 sacos)",
+    "Rejunte Extra Flex 1kg Bege (30 unidades)",
+    "Execução e instalação de pisos e revestimentos incl. rodapés (300m²)",
+  ]},
+
+  {floor:"terreo", id:8, label:"8ª Etapa — Paredes de gesso e forro", items:[
+    "Paredes de gesso convencional 70mm c/ gesso hidrofugante na base (60m²)",
+    "Forro em gesso acartonado F530 — corredor / circulação / acesso (90m²)",
+    "Forro em gesso acartonado — 9 salas (120m²)",
+    "Instalação de manta PET acústica nas 9 salas (melhoria de isolamento acústico)",
+    "Instalação de alçapões — corredor",
+    "Instalação de alçapões — salas",
+  ]},
+
+  {floor:"terreo", id:9, label:"9ª Etapa — Esquadrias, portas e vidros", items:[
+    "Kit porta lisa madeira giro 210x70cm — 1 unidade",
+    "Kit porta lisa madeira giro 210x80cm — 10 unidades",
+    "Fechadura Pado Concept cromado 40mm — 11 unidades",
+    "Portão em metalon galvanizado 2 folhas abrindo + 1 fixa 3,30x2,50m",
+    "Porta de giro alumínio preto 0,90x2,10m (2 unidades)",
+    "Porta de correr alumínio preto + vidro incolor 3,10x2,50m",
+    "Porta de correr alumínio preto + vidro incolor 1,50x2,50m",
+    "Porta de correr alumínio preto + vidro reflecta prata 1,75x2,50m",
+    "Pele de vidro — parte fixa + maxim-ar alumínio preto 1,20x2,50m",
+    "Janela de correr alumínio preto + vidro incolor 3 folhas 1,50x1,10m",
+    "Janela de correr alumínio preto + vidro jateado 2 folhas 1,20x1,10m (2 unidades)",
+    "Guarda-corpo alumínio preto + vidro reflecta prata 2,75x0,90m",
+    "Vedação com silicone e testes de estanqueidade",
+  ]},
+
+  {floor:"terreo", id:10, label:"10ª Etapa — Impermeabilização laje coberta", items:[
+    "Destelhamento / regularização / reparos e caimento da coberta (215m²)",
+    "Impermeabilização rebaixo banheiro c/ tinta asfáltica — 2 WCs (7,4m²)",
+    "Execução de rodapés técnicos e arremates para impermeabilização",
+    "Manta asfáltica poliéster 4mm tipo III classe B (300m²)",
+    "Teste de estanqueidade da impermeabilização",
+  ]},
+
+  {floor:"terreo", id:11, label:"11ª Etapa — Finalização e serviços diversos", items:[
+    "Paisagismo jardim interno / fosso de ventilação (9,7m²)",
+    "Porta de giro ACM cinza escuro 1,50x2,35m",
+    "Porta de giro ACM cinza escuro 0,90x2,35m",
+    "Porta de giro ACM branco acetinado 1,10x2,35m",
+    "Limpeza geral de obra (215m²)",
+    "Vistoria e punch list final",
+    "Entrega das chaves",
+  ]},
+
+  // ── 1º PAVIMENTO — 195m² ─────────────────────────────────────────────────
+  {floor:"upper", id:12, label:"1ª — Serviços preliminares / EPIs / Layouts e marcações", done:true, items:[
+    "Mobilização inicial / organização de canteiro",
+    "Ferramentas, equipamentos e EPIs",
+    "Layouts e marcações gerais do pavimento",
+    "Marcações para hidrossanitário e elétrica",
+    "Demolições pontuais necessárias",
+    "Proteção de áreas e isolamento de frentes",
+  ]},
+
+  {floor:"upper", id:13, label:"2ª — Alvenarias a construir (218m²)", done:true, items:[
+    "Alvenaria de vedação geral — em andamento (218m²)",
+    "Alvenaria do quarto adicional (~12m²) — completo",
+    "Vergas, contravergas e cintas",
+    "Regularização de base para reboco",
+  ]},
+
+  {floor:"upper", id:14, label:"3ª — Rebocos e emassamentos PVA (326m²)", active:true, items:[
+    "Reboco + emboço paredes internas (326m²)",
+    "Reboco fino e regularização de alvenarias",
+    "Emassamento PVA paredes — 2 demãos",
+  ]},
+
+  {floor:"upper", id:15, label:"4ª — Hidrossanitário — pontos prévios pav. superior", items:[
+    "Instalação das tubulações de água fria",
+    "Instalação das tubulações de água quente",
+    "Instalação das tubulações de esgoto e ventilação",
+    "Ajuste de mão de obra (conforme orçamento ajustado)",
+    "Pontos de chuveiro externo / terraço",
+    "Testes de pressão e estanqueidade",
+  ]},
+
+  {floor:"upper", id:16, label:"5ª — Elétrico e luminotécnico pav. superior", items:[
+    "Passagem de cabos elétricos (força, iluminação, AC)",
+    "Passagem de cabos de dados / lógica",
+    "Pontos de tomadas (conforme revisão — extras incluídos)",
+    "Pontos de arandelas externas (4 unidades)",
+    "Infraestrutura para ar condicionado tipo split",
+    "Teste de continuidade e aterramento",
+  ]},
+
+  {floor:"upper", id:17, label:"6ª — Pisos porcelanato cimento grigio 60x60 (interno e externo)", items:[
+    "Assentamento porcelanato cimento grigio 60x60 — cinza claro fosco antiderrapante",
+    "Assentamento em áreas internas",
+    "Assentamento em áreas externas",
+    "Rejunte e limpeza",
+    "Rodapés no porcelanato",
+  ]},
+
+  {floor:"upper", id:18, label:"7ª — Revestimentos paredes — cozinha / WCs / lavanderia / deck", items:[
+    "Revestimento parede cozinha",
+    "Revestimento paredes WCs",
+    "Revestimento lavanderia",
+    "Revestimento deck",
+    "Rejunte e limpeza",
+  ]},
+
+  {floor:"upper", id:19, label:"8ª — Portas e esquadrias alumínio preto + vidro linha suprema + guarda-corpo", items:[
+    "Esquadrias de alumínio preto — janelas",
+    "Portas de alumínio preto + vidro linha suprema",
+    "Guarda-corpo corredor e sacada",
+    "Instalação de vidros",
+    "Vedação com silicone e teste de estanqueidade",
+    "Armadores de rede — quartos, varandas e sala",
+  ]},
+
+  {floor:"upper", id:20, label:"9ª — Kit portas MDF / madeira de giro — 9 unidades (ajustado 90cm)", items:[
+    "Instalação kit porta MDF/madeira giro ESQ e DIR 90cm — quartos (9 unidades)",
+    "Marcos e guarnições",
+    "Ferragens — fechaduras, dobradiças e puxadores",
+    "Regulagem e ajuste das folhas",
+  ]},
+
+  {floor:"upper", id:21, label:"10ª — Bancadas cozinha / WCs / lavanderia / deck — granito São Gabriel escovado", items:[
+    "Bancada cozinha — granito São Gabriel escovado",
+    "Bancadas WCs — granito São Gabriel escovado",
+    "Bancada lavanderia — granito São Gabriel escovado",
+    "Bancada deck — granito São Gabriel escovado",
+    "Fixação, rejunte e acabamento",
+  ]},
+
+  {floor:"upper", id:22, label:"11ª — Escada em mármore travertino estilo romano com corrimão metálico lateral", items:[
+    "Fornecimento do mármore travertino estilo romano",
+    "Execução e assentamento dos degraus",
+    "Instalação do corrimão metálico lateral",
+    "Acabamento e rejunte",
+  ]},
+
+  {floor:"upper", id:23, label:"12ª — Louças e metais / vasos c/ caixas acopladas / torneiras", items:[
+    "Instalação de vasos com caixas acopladas",
+    "Instalação de cubas e lavatórios",
+    "Torneiras e misturadores",
+    "Chuveiro externo / terraço",
+    "Acessórios (saboneteiras, papeleiras, toalheiros)",
+    "Corrimões nos WCs do superior",
+    "Teste geral de vazamentos",
+  ]},
+
+  {floor:"upper", id:24, label:"13ª — Lajes e impermeabilizações", items:[
+    "Impermeabilização laje coberta (manta asfáltica ou cristalização)",
+    "Impermeabilização áreas molhadas e rebaixos banheiro",
+    "Impermeabilização de chapins e parapeitos",
+    "Rufos, calhas e caimentos de drenagem",
+    "Teste de estanqueidade da cobertura",
+  ]},
+
+  {floor:"upper", id:25, label:"14ª — Forro de gesso", items:[
+    "Forro de gesso — salas e circulação",
+    "Forro de gesso — quartos e banheiros",
+    "Alçapões — corredor e salas",
+    "Passagem de mangueiras AC e pontos elétricos no forro",
+    "Teste de acesso pelos alçapões",
+  ]},
+
+  {floor:"upper", id:26, label:"15ª — Pintura latex semibrilho branco neve teto / papel picado paredes (480m²)", items:[
+    "Pintura latex semibrilho branco neve — teto",
+    "Papel picado — paredes (480m²)",
+    "Retoque final pós-instalações",
+  ]},
+
+  {floor:"upper", id:27, label:"16ª — Complementares / escada marinheiro / plataforma metálica acesso gás / cobogós", items:[
+    "Escada marinheiro (acesso cobertura ou ático)",
+    "Plataforma metálica para acesso ao gás",
+    "Cobogós — execução e rejunte",
+    "Demais complementares e arremates",
+  ]},
+
+  {floor:"upper", id:28, label:"17ª — Portas de enrolar metálica (P14 1,75x2,50m + P15 1,20x2,50m)", items:[
+    "Fornecimento e instalação porta de enrolar metálica P14 — 1,75x2,50m",
+    "Fornecimento e instalação porta de enrolar metálica P15 — 1,20x2,50m",
+    "Regulagem, fixação e acabamento",
+  ]},
+
+  {floor:"upper", id:29, label:"18ª — Acabamentos e finalização", items:[
+    "Rodapés e arremates gerais",
+    "Revisão geral de rejuntes e silicones",
+    "Limpeza técnica de obra",
+    "Vistoria e punch list final",
+  ]},
+
+  {floor:"upper", id:30, label:"19ª — Tampas lanternim vidro 10mm temperado + alumínio preto (3,50x1,15 + 1,60x1,15)", items:[
+    "Fornecimento e instalação tampa lanternim vidro 10mm temperado — 3,50x1,15m",
+    "Fornecimento e instalação tampa lanternim vidro 10mm temperado — 1,60x1,15m",
+    "Perfis em alumínio preto",
+    "Vedação e acabamento",
+  ]},
+
+  {floor:"upper", id:31, label:"20ª — Montagem e finalização de bancadas e escada (pedras)", items:[
+    "Montagem final bancadas — granito São Gabriel escovado",
+    "Finalização e polimento da escada travertino romano",
+    "Rejunte, vedação e acabamento final das pedras",
+  ]},
+
+  {floor:"upper", id:32, label:"21ª — Adicionais: chuveiro externo / arandelas externas (4un) / armadores de rede", items:[
+    "Instalação chuveiro externo",
+    "Instalação arandelas externas — 4 unidades",
+    "Instalação armadores de rede — quartos, varandas e sala",
+    "Testes e acabamento final",
+  ]},
+];
+
+// ─── CRONOGRAMA ───────────────────────────────────────────────────────────────
+const crono = [
+  {floor:"terreo", fase:"1. Projetos e planejamento",    s:0,  e:0,  done:true, col:"#3D8A56"},
+  {floor:"terreo", fase:"2. Serviços preliminares",      s:0,  e:0,  done:true, col:"#3D8A56"},
+  {floor:"terreo", fase:"3. Estrutura e preparação",     s:0,  e:0,  done:true, col:"#3D8A56"},
+  {floor:"terreo", fase:"4. Hidrossanitário",            s:1,  e:2,  col:"#3A7EBF"},
+  {floor:"terreo", fase:"5. Elétrico e luminotécnico",   s:2,  e:4,  col:"#3A7EBF"},
+  {floor:"terreo", fase:"6. Rebocos e paredes",          s:3,  e:5,  col:"#B87A20"},
+  {floor:"terreo", fase:"7. Pisos e revestimentos",      s:5,  e:7,  col:"#B87A20"},
+  {floor:"terreo", fase:"8. Gesso e forro",              s:6,  e:8,  col:"#B87A20"},
+  {floor:"terreo", fase:"9. Esquadrias e portas",        s:7,  e:9,  col:"#A04A25"},
+  {floor:"terreo", fase:"10. Impermeabilização coberta",  s:4,  e:6,  col:"#2D6B8A"},
+  {floor:"terreo", fase:"11. Finalização",                s:11, e:13, col:"#2D5A3D"},
+  {floor:"upper",  fase:"1. Serv. preliminares / Hidro / Elétrica",  s:1,  e:2,  col:"#4A90D4"},
+  {floor:"upper",  fase:"2. Alvenarias (218m²)",                      s:1,  e:3,  col:"#4A90D4"},
+  {floor:"upper",  fase:"3. Rebocos e emassamentos (326m²)",          s:3,  e:5,  col:"#4A8EC0"},
+  {floor:"upper",  fase:"4. Hidrossanitário pontos prévios",          s:3,  e:4,  col:"#3A7EC0"},
+  {floor:"upper",  fase:"5. Elétrico e luminotécnico",                s:3,  e:5,  col:"#3A7EC0"},
+  {floor:"upper",  fase:"6. Pisos porcelanato 60x60",                 s:5,  e:7,  col:"#4A8EC0"},
+  {floor:"upper",  fase:"7. Revestimentos paredes",                   s:5,  e:7,  col:"#4A8EC0"},
+  {floor:"upper",  fase:"8. Esquadrias alumínio preto",               s:6,  e:8,  col:"#A04A25"},
+  {floor:"upper",  fase:"9. Portas MDF / giro",                       s:7,  e:8,  col:"#A04A25"},
+  {floor:"upper",  fase:"10. Bancadas granito São Gabriel",            s:8,  e:9,  col:"#A04A25"},
+  {floor:"upper",  fase:"11. Escada travertino + corrimão",            s:8,  e:9,  col:"#A04A25"},
+  {floor:"upper",  fase:"12. Louças e metais",                         s:9,  e:10, col:"#A04A25"},
+  {floor:"upper",  fase:"13. Lajes e impermeabilizações",              s:5,  e:7,  col:"#2D6B8A"},
+  {floor:"upper",  fase:"14. Forro de gesso",                          s:8,  e:9,  col:"#4A8EC0"},
+  {floor:"upper",  fase:"15. Pintura / papel picado (480m²)",          s:9,  e:10, col:"#4A8EC0"},
+  {floor:"upper",  fase:"16. Complementares / cobogós",                s:9,  e:10, col:"#4A90D4"},
+  {floor:"upper",  fase:"17. Portas enrolar metálica",                 s:10, e:11, col:"#A04A25"},
+  {floor:"upper",  fase:"19. Tampas lanternim vidro temperado",        s:10, e:11, col:"#3A7EC0"},
+  {floor:"upper",  fase:"18. Acabamentos e finalização",               s:11, e:13, col:"#2D5A3D"},
+  {floor:"upper",  fase:"21. Adicionais (chuveiro / arandelas / rede)",s:12, e:13, col:"#2D5A3D"},
+];
+
+const WEEKS = 13;
+const STORAGE_KEY = "obra_maj_agostinho_v3";
+
+function loadChecks() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}"); } catch(e) { return {}; } }
+function saveChecks(data) { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch(e) {} }
+
+function animateFinDonuts() {
+  const circ = 264;
+  // Térreo: 273000/444913 = 61%
+  const tPct = 61;
+  // Superior: 100146/286134 = 35%
+  const uPct = 35;
+  // Gasto real: 282970/731047 = 39%
+  const gPct = 39;
+
+  function setD(id, pct) {
+    const el = document.getElementById(id);
+    if (el) el.style.strokeDashoffset = circ - (circ * pct / 100);
+  }
+  setD("fin-donut-terreo-paid", tPct);
+  setD("fin-donut-upper-paid", uPct);
+  setD("fin-donut-gasto", gPct);
+}
+
+function buildProgressCard() {
+  const container = document.getElementById("progress-phases-list");
+  if (!container) return;
+  const checks = loadChecks();
+  phases.forEach(ph => {
+    const w = phaseWeights[ph.id] || 1;
+    let phDone = 0;
+    ph.items.forEach((_, i) => { if (checks[ph.id + "-" + i]) phDone++; });
+    const pct = ph.items.length ? Math.round(phDone / ph.items.length * 100) : 0;
+    const isDone = ph.done;
+    const isUpper = ph.floor === "upper";
+    const barColor = isDone ? "#3D8A56" : (isUpper ? "#4A8EC0" : "#3A7EBF");
+    const row = document.createElement("div");
+    row.className = "progress-phase-row";
+    row.innerHTML = `
+      <span class="progress-phase-label" title="${ph.label}">${ph.label}</span>
+      <div class="progress-phase-bar-wrap">
+        <div class="progress-phase-bar-fill" id="pbar-${ph.id}" style="width:${pct}%;background:${barColor}"></div>
+      </div>
+      <span class="progress-phase-pct" id="ppct-${ph.id}">${pct}%</span>`;
+    container.appendChild(row);
+  });
+}
+
+function buildPhases() {
+  const checks = loadChecks();
+  phases.forEach(ph => { if (ph.done) ph.items.forEach((_, i) => { checks[ph.id + "-" + i] = 1; }); });
+  saveChecks(checks);
+
+  const cont = document.getElementById("phases-container");
+
+  let lastFloor = null;
+  const floorCounters = {};
+  phases.forEach(ph => {
+    // Floor divider
+    if (ph.floor !== lastFloor) {
+      lastFloor = ph.floor;
+      const div = document.createElement("div");
+      div.className = "section-divider";
+      if (ph.floor === "terreo") {
+        div.innerHTML = `<div class="section-divider-line"></div><span class="section-divider-label">Pavimento Térreo</span><span class="section-divider-badge badge-floor-ground">9 salas · 248 m²</span><div class="section-divider-line"></div>`;
+      } else {
+        div.innerHTML = `<div class="section-divider-line"></div><span class="section-divider-label">1º Pavimento</span><span class="section-divider-badge badge-floor-upper">uso misto · quarto adicional</span><div class="section-divider-line"></div>`;
+      }
+      cont.appendChild(div);
+    }
+
+    const el = document.createElement("div");
+    let extraClass = ph.done ? " done-phase" : (ph.active ? " open" : "");
+    if (ph.highlight) extraClass += " highlight-phase";
+    el.className = "phase" + extraClass;
+    el.id = "ph-" + ph.id;
+
+    const isDonePhase = ph.done;
+    const itemsHtml = ph.items.map((t, i) => {
+      const key = ph.id + "-" + i;
+      const checked = checks[key] ? "checked" : "";
+      const doneClass = checks[key] ? " done" : "";
+      const disabled = (isDonePhase || !isUnlocked()) ? "disabled" : ""; const dataDone = isDonePhase ? "data-done='1'" : "";
+      return `<div class="item-row"><input type="checkbox" id="cb-${key}" ${checked} ${disabled} ${dataDone} onchange="onCheck(${ph.id},${i},this.checked)"><label class="item-label${doneClass}" for="cb-${key}">${t}</label></div>`;
+    }).join("");
+
+    if (!floorCounters[ph.floor]) floorCounters[ph.floor] = 0;
+    floorCounters[ph.floor]++;
+    const displayNum = floorCounters[ph.floor];
+
+    let numClass = ph.floor === "upper"
+      ? (ph.done ? "done-num" : (ph.active ? "upper-active-num" : "upper-num"))
+      : (ph.done ? "done-num" : (ph.active ? "active-num" : ""));
+
+    let badge = "";
+    if (ph.done) badge = `<span class="badge-done">✓ concluída</span>`;
+    else if (ph.active && ph.floor === "upper") badge = `<span class="badge-upper-active">em andamento</span>`;
+    else if (ph.active) badge = `<span class="badge-active">em andamento</span>`;
+
+    const milestoneHtml = ph.milestone ? `<div class="phase-milestone">${ph.milestone}</div>` : "";
+
+    el.innerHTML = `
+      <div class="phase-header" onclick="togglePhase(${ph.id})">
+        <div class="phase-num ${numClass}">${displayNum}</div>
+        <span class="phase-title">${ph.label}</span>
+        ${badge}
+        <span class="phase-prog-text" id="prog-${ph.id}">—</span>
+        <span class="phase-chevron">▼</span>
+      </div>
+      <div class="phase-bar"><div class="phase-bar-fill" id="fill-${ph.id}" style="width:0%"></div></div>
+      <div class="phase-body">${milestoneHtml}${itemsHtml}</div>`;
+    cont.appendChild(el);
+  });
+  updateStats();
+}
+
+function togglePhase(id) { document.getElementById("ph-" + id).classList.toggle("open"); }
+
+function onCheck(phId, itemIdx, val) {
+  if (!isUnlocked()) {
+    const cb = document.getElementById(phId + "-" + itemIdx);
+    if (cb) cb.checked = !val;
+    return;
+  }
+  const checks = loadChecks();
+  const key = phId + "-" + itemIdx;
+  if (val) checks[key] = 1; else delete checks[key];
+  saveChecks(checks);
+  const lbl = document.getElementById("cb-" + key)?.nextElementSibling;
+  if (lbl) lbl.classList.toggle("done", val);
+  updateStats();
+}
+
+const phaseWeights = {
+  // Térreo
+  1: 3,   // projetos
+  2: 5,   // demolicoes
+  3: 22,  // estrutura (maior peso)
+  4: 5,   // hidro terreo
+  5: 7,   // eletrica terreo
+  6: 6,   // reboco/pintura terreo
+  7: 5,   // pisos terreo
+  8: 3,   // gesso/forro terreo
+  9: 5,   // esquadrias terreo
+  10: 4,  // impermeab terreo
+  11: 2,  // finalizacao terreo
+  // Superior 195m²
+  12: 4,  // serv. prel. / hidro / eletrica / demolicoes
+  13: 5,  // alvenarias 218m²
+  14: 4,  // rebocos/emassamentos 326m²
+  15: 3,  // hidro superior
+  16: 3,  // eletrico superior
+  17: 4,  // pisos porcelanato
+  18: 3,  // revestimentos paredes
+  19: 4,  // esquadrias aluminio preto
+  20: 2,  // portas MDF
+  21: 3,  // bancadas granito
+  22: 3,  // escada travertino
+  23: 2,  // loucas e metais
+  24: 3,  // lajes e impermeab
+  25: 2,  // forro gesso
+  26: 2,  // pintura
+  27: 2,  // complementares
+  28: 1,  // portas enrolar
+  29: 2,  // acabamentos
+  30: 2,  // tampas lanternim
+  31: 1,  // montagem bancadas/escada
+  32: 1,  // adicionais
+};
+
+function updateStats() {
+  const checks = loadChecks();
+  let totalItems = 0, doneItems = 0;
+  let weightedTotal = 0, weightedDone = 0;
+  let floorData = {
+    terreo: { weightedTotal:0, weightedDone:0, items:0, done:0 },
+    upper:  { weightedTotal:0, weightedDone:0, items:0, done:0 }
+  };
+
+  phases.forEach(ph => {
+    const w = phaseWeights[ph.id] || 1;
+    let phDone = 0;
+    ph.items.forEach((_, i) => {
+      totalItems++;
+      floorData[ph.floor].items++;
+      if (checks[ph.id + "-" + i]) { doneItems++; phDone++; floorData[ph.floor].done++; }
+    });
+    const phPct = ph.items.length ? phDone / ph.items.length : 0;
+    weightedTotal += w;
+    weightedDone += w * phPct;
+    floorData[ph.floor].weightedTotal += w;
+    floorData[ph.floor].weightedDone += w * phPct;
+
+    const pct = ph.items.length ? Math.round(phPct * 100) : 0;
+    const fill = document.getElementById("fill-" + ph.id);
+    const prog = document.getElementById("prog-" + ph.id);
+    if (fill) fill.style.width = pct + "%";
+    if (prog) prog.textContent = phDone + "/" + ph.items.length;
+  });
+
+  const weightedPct = weightedTotal ? Math.round(weightedDone / weightedTotal * 100) : 0;
+  document.getElementById("h-pct").textContent = weightedPct + "%";
+  document.getElementById("h-items").textContent = doneItems + "/" + totalItems;
+  document.getElementById("strip").style.width = weightedPct + "%";
+
+  // Update donut charts
+  const circumference = 289;
+
+  // Térreo phases: ids 1-11
+  const terreoPhs = phases.filter(p => p.floor === "terreo");
+  let terreoW = 0, terreoDone = 0;
+  terreoPhs.forEach(ph => {
+    const w = phaseWeights[ph.id] || 1;
+    let phDone = 0;
+    ph.items.forEach((_, i) => { if (checks[ph.id + "-" + i]) phDone++; });
+    terreoW += w;
+    terreoDone += w * (ph.items.length ? phDone / ph.items.length : 0);
+  });
+  const terreoPct = terreoW ? Math.round(terreoDone / terreoW * 100) : 0;
+
+  // Upper phases: ids 12+
+  const upperPhs = phases.filter(p => p.floor === "upper");
+  let upperW = 0, upperDone = 0;
+  upperPhs.forEach(ph => {
+    const w = phaseWeights[ph.id] || 1;
+    let phDone = 0;
+    ph.items.forEach((_, i) => { if (checks[ph.id + "-" + i]) phDone++; });
+    upperW += w;
+    upperDone += w * (ph.items.length ? phDone / ph.items.length : 0);
+  });
+  const upperPct = upperW ? Math.round(upperDone / upperW * 100) : 0;
+
+  function setDonut(id, pct) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.style.strokeDashoffset = circumference - (circumference * pct / 100);
+  }
+
+  function setLabel(id, pct) {
+    const el = document.getElementById(id);
+    if (el) el.textContent = pct + "%";
+  }
+
+  setDonut("donut-terreo", terreoPct); setLabel("pct-terreo-label", terreoPct);
+  setDonut("donut-upper", upperPct);   setLabel("pct-upper-label", upperPct);
+  setDonut("donut-total", weightedPct); setLabel("pct-total-label", weightedPct);
+
+  // Per-floor bars
+  ["terreo", "upper"].forEach(floor => {
+    const fd = floorData[floor];
+    const pct = fd.weightedTotal ? Math.round(fd.weightedDone / fd.weightedTotal * 100) : 0;
+    const barEl = document.getElementById("bar-" + floor);
+    const pctEl = document.getElementById("pct-" + floor);
+    const itemsEl = document.getElementById("items-" + floor);
+    if (barEl) barEl.style.width = pct + "%";
+    if (pctEl) pctEl.textContent = pct + "%";
+    if (itemsEl) itemsEl.textContent = fd.done + "/" + fd.items + " itens";
+  });
+
+  // Update info tab progress card
+  const bigFill = document.getElementById("big-bar-fill");
+  const bigPct = document.getElementById("big-bar-pct");
+  if (bigFill) bigFill.style.width = weightedPct + "%";
+  if (bigPct) bigPct.textContent = weightedPct + "%";
+
+  phases.forEach(ph => {
+    const checks2 = loadChecks();
+    let phDone = 0;
+    ph.items.forEach((_, i) => { if (checks2[ph.id + "-" + i]) phDone++; });
+    const pct = ph.items.length ? Math.round(phDone / ph.items.length * 100) : 0;
+    const bar = document.getElementById("pbar-" + ph.id);
+    const pctEl = document.getElementById("ppct-" + ph.id);
+    if (bar) bar.style.width = pct + "%";
+    if (pctEl) pctEl.textContent = pct + "%";
+  });
+}
+
+function buildCrono() {
+  const weeks = Array.from({length: WEEKS}, (_, i) => i + 1);
+  let html = "<thead><tr><th>Fase</th>";
+  weeks.forEach(w => { html += `<th class="week-head" style="${w===1?"color:var(--accent);font-weight:500":""}"">S${w}</th>`; });
+  html += "</tr></thead><tbody>";
+
+  let lastFloor = null;
+  crono.forEach(row => {
+    if (row.floor !== lastFloor) {
+      lastFloor = row.floor;
+      const label = row.floor === "terreo"
+        ? "▪ Pavimento Térreo — Comercial · 9 salas · 248m²"
+        : "▪ 1º Pavimento — Residencial · 195m²";
+      const floorClass = row.floor === "terreo" ? "floor-terreo" : "floor-upper";
+      if (row.floor === "upper") {
+        html += `<tr><td colspan="${WEEKS + 1}" style="height:16px;background:var(--bg);border:none;padding:0"></td></tr>`;
+      }
+      html += `<tr class="crono-floor-row ${floorClass}"><td colspan="${WEEKS + 1}">${label}</td></tr>`;
+    }
+    if (row.done) {
+      html += `<tr><td style="color:var(--ink-3);text-decoration:line-through">${row.fase} ✓</td>`;
+      weeks.forEach(() => { html += "<td class=\"wk\"></td>"; });
+      html += "</tr>";
+      return;
+    }
+    html += `<tr><td>${row.fase}</td>`;
+    weeks.forEach(w => {
+      if (w >= row.s && w <= row.e) {
+        html += `<td class="wk"><div class="bar" style="background:${row.col}"></div></td>`;
+      } else { html += "<td class=\"wk\"></td>"; }
+    });
+    html += "</tr>";
+  });
+  html += "</tbody>";
+  document.getElementById("crono-table").innerHTML = html;
+
+  const legend = [
+    {col:"#3D8A56",label:"Concluído"},
+    {col:"#3A7EBF",label:"Instalações"},
+    {col:"#B87A20",label:"Revestimentos / Gesso"},
+    {col:"#A04A25",label:"Esquadrias e sistemas"},
+    {col:"#2D6B8A",label:"Impermeabilização"},
+    {col:"#4A90D4",label:"Superior — estrutura"},
+    {col:"#3A7EC0",label:"Superior — instalações"},
+    {col:"#4A8EC0",label:"Superior — acabamento"},
+    {col:"#2D5A3D",label:"Entrega"},
+  ];
+  const legDiv = document.createElement("div");
+  legDiv.className = "crono-legend";
+  legDiv.innerHTML = legend.map(l => `<div class="leg"><div class="leg-dot" style="background:${l.col}"></div>${l.label}</div>`).join("");
+  document.querySelector(".crono-wrap").appendChild(legDiv);
+  const note = document.createElement("p");
+  note.style.cssText = "font-size:12px;color:var(--ink-3);padding:0 1rem 1rem;font-family:DM Mono,monospace";
+  note.textContent = "S1 = semana atual (início hidrossanitário térreo). [T] = Térreo · [S] = Superior.";
+  document.querySelector(".crono-wrap").appendChild(note);
+}
+
+function showTabProtected(id) {
+  const unlocked = sessionStorage.getItem("obra_private_unlocked") === "1";
+  showTab(id);
+  document.getElementById(id === "financeiro" ? "fin-locked" : "doc-locked").style.display = unlocked ? "none" : "block";
+  document.getElementById(id === "financeiro" ? "fin-content" : "doc-content").style.display = unlocked ? "block" : "none";
+}
+
+function unlockTab(tab) {
+  document.getElementById("pin-overlay").style.display = "flex";
+  document.getElementById("pin-overlay").dataset.targetTab = tab;
+  setTimeout(() => document.getElementById("pin-input").focus(), 100);
+}
+
+function openDoc(linkId) {
+  const url = prompt("Cole o link do documento (Google Drive, PDF, etc.):");
+  if (url && url.trim()) {
+    const el = document.getElementById(linkId);
+    el.href = url.trim();
+    el.textContent = "Abrir ↗";
+    el.style.background = "#111111";
+    el.style.borderColor = "#222222";
+    el.style.color = "#6DC48A";
+    el.setAttribute("target", "_blank");
+    el.setAttribute("onclick", "");
+  }
+}
+
+function showTab(id) {
+  document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("on"));
+  document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("on"));
+  document.getElementById("tab-" + id).classList.add("on");
+  document.querySelectorAll(".tab-btn").forEach(b => { if (b.getAttribute("onclick").includes(id)) b.classList.add("on"); });
+  if (id === "info") { setTimeout(updateStats, 100); }
+  if (id === "financeiro") { setTimeout(animateFinDonuts, 200); }
+}
+
+// ─── LOCK SYSTEM ─────────────────────────────────────────────────────────────
+const PASS = "607080";
+const PASS_PRIVATE = "090226";
+const SESSION_KEY = "obra_unlocked";
+
+function isUnlocked() {
+  return sessionStorage.getItem(SESSION_KEY) === "1";
+}
+
+function toggleLock() {
+  if (isUnlocked()) {
+    sessionStorage.removeItem(SESSION_KEY);
+    updateLockUI();
+  } else {
+    document.getElementById("pin-overlay").style.display = "flex";
+    setTimeout(() => document.getElementById("pin-input").focus(), 100);
+  }
+}
+
+function confirmPin() {
+  const val = document.getElementById("pin-input").value;
+  const targetTab = document.getElementById("pin-overlay").dataset.targetTab;
+  const isPrivateTab = targetTab === "financeiro" || targetTab === "documentos";
+  const correctPass = isPrivateTab ? PASS_PRIVATE : PASS;
+
+  if (val === correctPass) {
+    if (isPrivateTab) {
+      sessionStorage.setItem("obra_private_unlocked", "1");
+    } else {
+      sessionStorage.setItem(SESSION_KEY, "1");
+      updateLockUI();
+      enableCheckboxes();
+    }
+    closePin();
+    if (targetTab) {
+      showTabProtected(targetTab);
+      delete document.getElementById("pin-overlay").dataset.targetTab;
+    }
+  } else {
+    document.getElementById("pin-error").style.display = "block";
+    document.getElementById("pin-input").value = "";
+  }
+}
+
+function closePin() {
+  document.getElementById("pin-overlay").style.display = "none";
+  document.getElementById("pin-input").value = "";
+  document.getElementById("pin-error").style.display = "none";
+}
+
+function updateLockUI() {
+  const unlocked = isUnlocked();
+  const statusEl = document.getElementById("lock-status");
+  if (statusEl) { statusEl.style.display = unlocked ? "inline" : "none"; statusEl.textContent = "✏️ edição"; }
+  const btn = document.getElementById("lock-btn");
+  btn.textContent = unlocked ? "Sair" : "Entrar";
+  btn.className = unlocked ? "lock-btn unlocked" : "lock-btn";
+}
+
+function enableCheckboxes() {
+  document.querySelectorAll(".item-row input[type=checkbox]:not([data-done])").forEach(cb => {
+    cb.disabled = false;
+  });
+}
+
+function disableCheckboxes() {
+  document.querySelectorAll(".item-row input[type=checkbox]:not([data-done])").forEach(cb => {
+    cb.disabled = true;
+  });
+}
+
+buildPhases();
+if (!isUnlocked()) disableCheckboxes();
+updateLockUI();
+buildCrono();
+buildProgressCard();
+</script>
+</body>
+</html>
