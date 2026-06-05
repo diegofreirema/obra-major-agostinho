@@ -2,6 +2,8 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Obra · Major Agostinho 350 — Maranguape</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -94,8 +96,8 @@ body { background: var(--bg); color: var(--ink); font-family: "DM Sans", sans-se
 .phase.done-phase .phase-bar-fill { background: var(--accent-mid); }
 
 /* HIGHLIGHT phase (structural milestone) */
-.phase.highlight-phase .phase-header { background: linear-gradient(90deg, #FBF5E8 0%, transparent 100%); border-color: #C8B890; }
-.phase-milestone { font-size: 12px; color: #7A5A1A; background: #FDF8EC; border: 1px solid #E8C86A; border-radius: 4px; padding: 8px 12px; margin: 4px 0 8px; line-height: 1.5; font-style: italic; }
+.phase.highlight-phase .phase-header { background: linear-gradient(90deg, #E8F5EC 0%, transparent 100%); border-color: #5A9E6E; }
+.phase-milestone { font-size: 12px; color: #245C38; background: #EAF5EE; border: 1px solid #5A9E6E; border-radius: 4px; padding: 8px 12px; margin: 4px 0 8px; line-height: 1.5; font-style: italic; }
 
 /* ITEM ROWS */
 .item-row { display: flex; align-items: flex-start; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--border); }
@@ -126,6 +128,15 @@ body { background: var(--bg); color: var(--ink); font-family: "DM Sans", sans-se
 .info-card-label { font-family: "DM Mono", monospace; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 4px; }
 .info-card-val { font-family: "DM Sans", sans-serif; font-weight:300; letter-spacing:.01em; font-size: 16px; font-weight: 500; color: var(--ink); }
 .section-label { font-family: "DM Mono", monospace; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); margin-bottom: .75rem; }
+
+
+.badge-andamento { font-family: "DM Mono", monospace; font-size: 10px; padding: 2px 8px; border-radius: 999px; font-weight: 500; background: #FEF9EC; color: #7A5A10; border: 1px solid #E8C84A; letter-spacing: .04em; }
+.badge-next { font-family: "DM Mono", monospace; font-size: 10px; padding: 2px 8px; border-radius: 999px; font-weight: 500; background: #F0EEEB; color: #706C68; border: 1px solid #C8C4BE; letter-spacing: .04em; }
+.phase-num.next-num { background: #F0EEEB; color: #706C68; border-color: #C8C4BE; }
+.phase-num.active-orange-num { background: #FEF9EC; color: #7A5A10; border-color: #E8C84A; }
+.phase.active-andamento > .phase-header { border-left: 3px solid #D4A840; }
+.phase.active-next > .phase-header { border-left: 3px solid #C8C4BE; }
+.phase.active-done > .phase-header { border-left: 3px solid #3D8A56; }
 
 /* FOOTER */
 .site-footer { text-align: center; padding: 2rem; font-family: "DM Mono", monospace; font-size: 11px; color: var(--ink-3); border-top: 1px solid var(--border); margin-top: 2rem; }
@@ -267,7 +278,7 @@ body { background: var(--bg); color: var(--ink); font-family: "DM Sans", sans-se
   </div>
   <div class="header-stats">
     <div class="hstat"><span class="hstat-num" id="h-pct">47%</span><span class="hstat-label">Progresso real</span></div>
-    <div class="hstat"><span class="hstat-num" id="h-items" style="font-size:14px">0/0</span><span class="hstat-label">Itens</span></div>
+    <div class="hstat"><span class="hstat-num" id="h-items" style="font-size:14px">—</span><span class="hstat-label">Itens</span></div>
   </div>
 </header>
 <div class="progress-strip"><div class="progress-strip-fill" id="strip" style="width:0%"></div></div>
@@ -315,23 +326,23 @@ body { background: var(--bg); color: var(--ink); font-family: "DM Sans", sans-se
     <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1rem 1.25rem">
       <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px">
         <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)">Térreo · Comercial</span>
-        <span style="font-family:'DM Mono',monospace;font-size:16px;font-weight:500;color:var(--accent)" id="pct-terreo">0%</span>
+        <span style="font-family:'DM Mono',monospace;font-size:16px;font-weight:500;color:var(--accent)" id="pct-terreo">49%</span>
       </div>
       <div style="height:8px;background:var(--surface);border-radius:4px;overflow:hidden">
-        <div id="bar-terreo" style="height:100%;width:0%;background:var(--accent-mid);border-radius:4px;transition:width .5s ease"></div>
+        <div id="bar-terreo" style="height:100%;width:49%;background:var(--accent-mid);border-radius:4px;transition:width .5s ease"></div>
       </div>
-      <div style="font-size:11px;color:var(--ink-3);margin-top:6px;font-family:'DM Mono',monospace" id="items-terreo">0/0 itens</div>
+      <div style="font-size:11px;color:var(--ink-3);margin-top:6px;font-family:'DM Mono',monospace" id="items-terreo">— itens</div>
     </div>
 
     <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1rem 1.25rem">
       <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px">
         <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)">1º Pav. · Residencial</span>
-        <span style="font-family:'DM Mono',monospace;font-size:16px;font-weight:500;color:#4A90D4" id="pct-upper">0%</span>
+        <span style="font-family:'DM Mono',monospace;font-size:16px;font-weight:500;color:#4A90D4" id="pct-upper">35%</span>
       </div>
       <div style="height:8px;background:var(--surface);border-radius:4px;overflow:hidden">
-        <div id="bar-upper" style="height:100%;width:0%;background:#4A90D4;border-radius:4px;transition:width .5s ease"></div>
+        <div id="bar-upper" style="height:100%;width:35%;background:#4A90D4;border-radius:4px;transition:width .5s ease"></div>
       </div>
-      <div style="font-size:11px;color:var(--ink-3);margin-top:6px;font-family:'DM Mono',monospace" id="items-upper">0/0 itens</div>
+      <div style="font-size:11px;color:var(--ink-3);margin-top:6px;font-family:'DM Mono',monospace" id="items-upper">— itens</div>
     </div>
 
   </div>
@@ -339,10 +350,15 @@ body { background: var(--bg); color: var(--ink); font-family: "DM Sans", sans-se
   <div class="alert-box">
     <div class="alert-title">⚑ Itens a adicionar / confirmar antes de executar</div>
     <div class="alert-grid">
-      <div class="alert-item"><span class="alert-dot"></span>Chuveirão e arandelas — terraço superior</div>
+      <div class="alert-item"><span class="alert-dot"></span>Chuveirão externo — terraço superior</div>
+      <div class="alert-item"><span class="alert-dot"></span>Arandelas terraço — instalar dos 2 lados, verificar pontos adicionais</div>
       <div class="alert-item"><span class="alert-dot"></span>Armadores de rede — quartos, varandas e sala (superior)</div>
       <div class="alert-item"><span class="alert-dot"></span>Tomadas extras — revisar pontos com elétrica</div>
       <div class="alert-item"><span class="alert-dot"></span>Corrimões nos WCs do superior</div>
+      <div class="alert-item"><span class="alert-dot"></span>Alçapões estratégicos no forro para manutenção — térreo e superior</div>
+      <div class="alert-item"><span class="alert-dot"></span>Shaft de gesso para esconder tubos — definir pontos com equipe</div>
+      <div class="alert-item"><span class="alert-dot"></span>Infraestrutura dados — internet, interfone, individualizar salas térreo e superior independente</div>
+      <div class="alert-item"><span class="alert-dot"></span>Substituir plataforma metálica casa de gás (superior) por concreto</div>
     </div>
   </div>
   <div style="background:#F4F2EF;border:1px solid #E0DBD4;border-radius:var(--radius-lg);padding:.85rem 1.25rem;margin-bottom:1.25rem">
@@ -524,7 +540,7 @@ body { background: var(--bg); color: var(--ink); font-family: "DM Sans", sans-se
 
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;flex-wrap:wrap;gap:8px">
       <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#9A9A9A">🔐 Área Restrita · Financeiro</div>
-      <div style="font-size:11px;color:#666666">Major Agostinho, 350 · 2 obras</div>
+      <button onclick="logoutPrivate()" style="font-family:'DM Sans',sans-serif;font-size:11px;padding:3px 12px;border-radius:999px;border:1px solid #333;background:#1E1E1E;color:#888;cursor:pointer">Sair</button>
     </div>
 
     <!-- RESUMO TOPO -->
@@ -535,17 +551,18 @@ body { background: var(--bg); color: var(--ink); font-family: "DM Sans", sans-se
       </div>
       <div class="private-card" style="border-radius:var(--radius-lg);padding:.85rem 1rem;border:1px solid #2C2C2C">
         <div class="private-label">Total pago</div>
-        <div class="private-val private-val-green">R$ 373.146,50</div>
-        <div style="font-size:11px;color:#666666;margin-top:2px">51% do estimado</div>
+        <div class="private-val private-val-green">R$ 458.986,50</div>
+        <div style="font-size:11px;color:#666666;margin-top:2px">63% do estimado</div>
       </div>
       <div class="private-card" style="border-radius:var(--radius-lg);padding:.85rem 1rem;border:1px solid #2C2C2C">
         <div class="private-label">A vencer</div>
-        <div class="private-val private-val-amber">R$ 357.900,15</div>
+        <div class="private-val private-val-amber">R$ 272.060,59</div>
       </div>
-      <div class="private-card" style="border-radius:var(--radius-lg);padding:.85rem 1rem;border:1px solid #1E2A1E">
+      <div class="private-card" style="border-radius:var(--radius-lg);padding:.85rem 1rem;border:1px solid #2A2818">
         <div class="private-label">Gasto real em obra</div>
-        <div class="private-val" style="color:#6DC48A">R$ 282.970,31</div>
-        <div style="font-size:11px;color:#666666;margin-top:2px">materiais + mão de obra</div>
+        <div class="private-val" style="color:#E0A84A;margin-top:4px">R$ 279.970,31</div>
+        <div style="display:flex;gap:12px;margin-top:8px">
+        </div>
       </div>
     </div>
 
@@ -722,11 +739,11 @@ body { background: var(--bg); color: var(--ink); font-family: "DM Sans", sans-se
           </div>
           <div style="background:#141A14;border-radius:var(--radius);padding:.75rem">
             <div style="font-size:10px;color:#666666;text-transform:uppercase;letter-spacing:.06em;font-family:'DM Mono',monospace">Total pago</div>
-            <div style="font-size:15px;font-weight:500;color:#6DC48A;margin-top:4px">R$ 100.146,50</div>
+            <div style="font-size:15px;font-weight:500;color:#6DC48A;margin-top:4px">R$ 185.986,50</div>
           </div>
           <div style="background:#2A2818;border-radius:var(--radius);padding:.75rem">
             <div style="font-size:10px;color:#888888;text-transform:uppercase;letter-spacing:.06em;font-family:'DM Mono',monospace">Total restante</div>
-            <div style="font-size:15px;font-weight:500;color:#E0A84A;margin-top:4px">R$ 185.987,50</div>
+            <div style="font-size:15px;font-weight:500;color:#E0A84A;margin-top:4px">R$ 100.147,50</div>
           </div>
         </div>
         <div style="font-size:11px;color:#666666;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.5rem">Parcelas pagas</div>
@@ -741,14 +758,15 @@ body { background: var(--bg); color: var(--ink); font-family: "DM Sans", sans-se
             <td style="padding:6px 4px;color:#666666;font-size:11px">30/03/2026</td>
             <td style="padding:6px 4px;text-align:right;font-weight:500;color:#6DC48A">R$ 71.533,50</td>
           </tr>
+          <tr>
+            <td style="padding:6px 4px;color:#C0C0C0">3ª Parcela — 30%</td>
+            <td style="padding:6px 4px;color:#666666;font-size:11px">01/06/2026</td>
+            <td style="padding:6px 4px;text-align:right;font-weight:500;color:#6DC48A">R$ 85.840,00</td>
+          </tr>
         </table>
         <div style="font-size:11px;color:#666666;font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.5rem">Próximos pagamentos previstos</div>
         <table style="width:100%;border-collapse:collapse;font-size:13px">
-          <tr style="border-bottom:1px solid var(--border)">
-            <td style="padding:6px 4px;color:#C0C0C0">3ª Parcela — 30%</td>
-            <td style="padding:6px 4px;color:#666666;font-size:11px">01/06/2026</td>
-            <td style="padding:6px 4px;text-align:right;color:#E0A84A;font-weight:500">R$ 85.840,20</td>
-          </tr>
+
           <tr style="border-bottom:1px solid var(--border)">
             <td style="padding:6px 4px;color:#C0C0C0">4ª Parcela — 25%</td>
             <td style="padding:6px 4px;color:#666666;font-size:11px">Jul — Ago / 2026</td>
@@ -767,7 +785,7 @@ body { background: var(--bg); color: var(--ink); font-family: "DM Sans", sans-se
         </table>
         <div style="margin-top:.75rem;padding-top:.75rem;border-top:1px solid #252525;display:flex;justify-content:space-between">
           <span style="font-size:12px;color:#666666">Total a vencer</span>
-          <span style="font-size:13px;font-weight:500;color:#E0A84A">R$ 185.987,10</span>
+          <span style="font-size:13px;font-weight:500;color:#E0A84A">R$ 100.147,10</span>
         </div>
       </div>
     </div>
@@ -781,16 +799,16 @@ body { background: var(--bg); color: var(--ink); font-family: "DM Sans", sans-se
         </div>
         <div style="background:#1E2A1E;border-radius:var(--radius);padding:.75rem">
           <div style="font-size:10px;color:#888888;text-transform:uppercase;letter-spacing:.06em;font-family:'DM Mono',monospace">Total pago</div>
-          <div style="font-size:15px;font-weight:500;color:#6DC48A;margin-top:4px">R$ 373.146,50</div>
+          <div style="font-size:15px;font-weight:500;color:#6DC48A;margin-top:4px">R$ 458.986,50</div>
         </div>
         <div style="background:#2A2818;border-radius:var(--radius);padding:.75rem">
           <div style="font-size:10px;color:#888888;text-transform:uppercase;letter-spacing:.06em;font-family:'DM Mono',monospace">Total a vencer</div>
-          <div style="font-size:15px;font-weight:500;color:#E0A84A;margin-top:4px">R$ 357.900,15</div>
+          <div style="font-size:15px;font-weight:500;color:#E0A84A;margin-top:4px">R$ 272.060,59</div>
         </div>
         <div style="background:#2A2818;border-radius:var(--radius);padding:.75rem;border:1px solid #2C2A18">
           <div style="font-size:10px;color:#666666;text-transform:uppercase;letter-spacing:.06em;font-family:'DM Mono',monospace">Gasto real em obra</div>
-          <div style="font-size:15px;font-weight:500;color:#E0A84A;margin-top:4px">R$ 282.970,31</div>
-          <div style="font-size:11px;color:#888888;margin-top:2px">materiais + mão de obra</div>
+          <div style="font-size:15px;font-weight:500;color:#E0A84A;margin-top:4px">R$ 279.970,31</div>
+          
         </div>
       </div>
     </div>
@@ -809,6 +827,7 @@ body { background: var(--bg); color: var(--ink); font-family: "DM Sans", sans-se
 
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;flex-wrap:wrap;gap:8px">
       <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#9A9A9A">🔐 Área Restrita · Documentos</div>
+      <button onclick="logoutPrivate()" style="font-family:'DM Sans',sans-serif;font-size:11px;padding:3px 12px;border-radius:999px;border:1px solid #333;background:#1E1E1E;color:#888;cursor:pointer">Sair</button>
     </div>
 
     <!-- CONTRATOS -->
@@ -902,52 +921,35 @@ const phases = [
     "Complemento: contrapiso em argamassa — esp. 3cm regularizado (88m²)",
   ]},
 
-  {floor:"terreo", id:4, label:"4ª Etapa — Hidrossanitário", active:true, items:[
-    "Pontos de água fria — 23 pontos",
-    "Pontos de esgoto e ralos — 31 pontos",
+  {floor:"terreo", id:4, label:"4ª Etapa — Rebocos e emboços", done:true, items:[
+    "Reboco + emboço paredes internas ✓",
+    "Reboco fino + regularização de alvenarias ✓",
+    "Parede de alvenaria de vedação — complemento das salas ✓",
+  ]},
+
+  {floor:"terreo", id:5, label:"5ª Etapa — Hidrossanitário", activeOrange:true, items:[
+    "Pontos de esgoto, ralos e caixas de passagem",
+    "Pontos de água fria",
     "Ponto de gás copa",
-    "Pontos de ar condicionado prévio — 9 salas + recepção (10 pontos)",
-    "Caixa d'água em fibra de vidro 1.000L (2 unidades)",
+    "Pontos de ar condicionado prévio — 9 salas + recepção",
+    "Caixa d'água em fibra de vidro 1.000L",
     "Bacia de louça branca c/ caixa acoplada — 2 unidades",
-    "Bancada / pia em granito copa 1,80x0,50m",
+    "Bancada pia copa 1,80m x 0,50m em granito",
     "Bancada em granito p/ lavatório c/ louça e acessórios (2 unidades)",
-    "Ducha higiênica cromada instalada (2 unidades)",
-    "Engates cromados instalados (5 unidades)",
+    "Duchas higiênicas e engates cromados instalados",
     "Testes de pressão e estanqueidade",
   ]},
 
-  {floor:"terreo", id:5, label:"5ª Etapa — Elétrico e luminotécnico", items:[
-    "Pontos de iluminação teto — painéis / spots / embutidos (32 pontos)",
-    "Arandelas / iluminação parede (12 pontos)",
-    "Pontos de fita LED — sanca / perfil (7m)",
-    "Interruptores simples / duplo / three-way (27 unidades)",
-    "Pontos de tomadas variadas (66 pontos)",
-    "Infraestrutura elétrica para ar condicionado tipo split — 9 salas",
-    "Pontos extras de tomadas (conforme revisão)",
+  {floor:"terreo", id:6, label:"6ª Etapa — Elétrico e luminotécnico", next:true, items:[
+    "Pontos de iluminação teto — painéis / spots / embutidos",
+    "Arandelas / iluminação parede",
+    "Interruptores simples / duplo / three-way",
+    "Pontos de tomadas variadas",
+    "Infraestrutura elétrica para ar condicionado tipo split — 9 salas + 1 recepção",
     "Teste de continuidade e aterramento",
   ]},
 
-  {floor:"terreo", id:6, label:"6ª Etapa — Rebocos e paredes (concluído: reboco)", items:[
-    "Reboco + emboço paredes internas (475m²) ✓",
-    "Reboco fino + regularização de alvenarias (475m²) ✓",
-    "Parede de alvenaria de vedação — complemento das salas (77m²) ✓",
-    "Emassamento de paredes internas — 2 demãos c/ massa PVA (475m²)",
-    "Pintura acrílica cor Atena Coral — paredes (475m²)",
-    "Aplicação de texturas e acabamento (30m²)",
-    "Pintura acrílica teto branco neve fosco (225m²)",
-    "Pintura teto hall — cimento queimado / túnel de concreto (38m²)",
-  ]},
-
-  {floor:"terreo", id:7, label:"7ª Etapa — Pisos e revestimentos", items:[
-    "Porcelanato amadeirado acetinado 26x106cm Carvalho Natural Biancogres (240m²)",
-    "Revestimento cimentício acetinado Ombre Secret Garden 7,7x30,5cm — WCs (16m²)",
-    "Revestimento cerâmico fachada Tradição 23x11cm Lepri ou similar (57m²)",
-    "Argamassa ACIII Porcelanato Top 10 Cinza (100 sacos)",
-    "Rejunte Extra Flex 1kg Bege (30 unidades)",
-    "Execução e instalação de pisos e revestimentos incl. rodapés (300m²)",
-  ]},
-
-  {floor:"terreo", id:8, label:"8ª Etapa — Paredes de gesso e forro", items:[
+  {floor:"terreo", id:7, label:"7ª Etapa — Paredes de gesso e forro", items:[
     "Paredes de gesso convencional 70mm c/ gesso hidrofugante na base (60m²)",
     "Forro em gesso acartonado F530 — corredor / circulação / acesso (90m²)",
     "Forro em gesso acartonado — 9 salas (120m²)",
@@ -956,7 +958,21 @@ const phases = [
     "Instalação de alçapões — salas",
   ]},
 
-  {floor:"terreo", id:9, label:"9ª Etapa — Esquadrias, portas e vidros", items:[
+  {floor:"terreo", id:8, label:"8ª Etapa — Pisos e revestimentos", items:[
+    "Porcelanato amadeirado acetinado 26x106cm Carvalho Natural Biancogres",
+    "Revestimento cimentício acetinado Ombre Secret Garden 7,7x30,5cm — WCs",
+    "Revestimento cerâmico fachada Tradição 23x11cm Lepri ou similar",
+  ]},
+
+  {floor:"terreo", id:9, label:"9ª Etapa — Pintura e acabamentos", items:[
+    "Emassamento de paredes internas — 2 demãos c/ massa PVA",
+    "Pintura acrílica cor Atena Coral — paredes",
+    "Pintura acrílica teto branco neve fosco",
+    "Pintura teto hall — cimento queimado / túnel de concreto",
+    "Aplicação de texturas e acabamento",
+  ]},
+
+  {floor:"terreo", id:10, label:"10ª Etapa — Esquadrias, portas e vidros", items:[
     "Kit porta lisa madeira giro 210x70cm — 1 unidade",
     "Kit porta lisa madeira giro 210x80cm — 10 unidades",
     "Fechadura Pado Concept cromado 40mm — 11 unidades",
@@ -972,57 +988,52 @@ const phases = [
     "Vedação com silicone e testes de estanqueidade",
   ]},
 
-  {floor:"terreo", id:10, label:"10ª Etapa — Impermeabilização laje coberta", items:[
-    "Destelhamento / regularização / reparos e caimento da coberta (215m²)",
-    "Impermeabilização rebaixo banheiro c/ tinta asfáltica — 2 WCs (7,4m²)",
+  {floor:"terreo", id:11, label:"11ª Etapa — Impermeabilização laje coberta", note:"Aditivo contemplado por supressão e alteração do escopo de impermeabilização (28/04/2026)", items:[
+    "Destelhamento / regularização / reparos e caimento da coberta",
+    "Impermeabilização rebaixo banheiro c/ tinta asfáltica — WCs",
     "Execução de rodapés técnicos e arremates para impermeabilização",
-    "Manta asfáltica poliéster 4mm tipo III classe B (300m²)",
+    "Manta asfáltica poliéster 4mm tipo III classe B",
     "Teste de estanqueidade da impermeabilização",
   ]},
 
-  {floor:"terreo", id:11, label:"11ª Etapa — Finalização e serviços diversos", items:[
-    "Paisagismo jardim interno / fosso de ventilação (9,7m²)",
-    "Porta de giro ACM cinza escuro 1,50x2,35m",
-    "Porta de giro ACM cinza escuro 0,90x2,35m",
-    "Porta de giro ACM branco acetinado 1,10x2,35m",
-    "Limpeza geral de obra (215m²)",
+  {floor:"terreo", id:12, label:"12ª Etapa — Finalização e serviços diversos", items:[
+    "Paisagismo jardim entrada e fosso — térreo",
+    "Limpeza geral de obra",
     "Vistoria e punch list final",
     "Entrega das chaves",
   ]},
 
-  // ── 1º PAVIMENTO — 195m² ─────────────────────────────────────────────────
-  {floor:"upper", id:12, label:"1ª — Serviços preliminares / EPIs / Layouts e marcações", done:true, items:[
+  // ── 1º PAVIMENTO ─────────────────────────────────────────────────────────
+  {floor:"upper", id:32, label:"1ª Etapa — Serviços preliminares / EPIs / Layouts", done:true, items:[
     "Mobilização inicial / organização de canteiro",
     "Ferramentas, equipamentos e EPIs",
     "Layouts e marcações gerais do pavimento",
     "Marcações para hidrossanitário e elétrica",
     "Demolições pontuais necessárias",
-    "Proteção de áreas e isolamento de frentes",
   ]},
 
-  {floor:"upper", id:13, label:"2ª — Alvenarias a construir (218m²)", done:true, items:[
+  {floor:"upper", id:33, label:"2ª Etapa — Alvenarias", done:true, items:[
     "Alvenaria de vedação geral — em andamento (218m²)",
-    "Alvenaria do quarto adicional (~12m²) — completo",
+    "Complemento de alvenaria quarto adicional",
     "Vergas, contravergas e cintas",
     "Regularização de base para reboco",
   ]},
 
-  {floor:"upper", id:14, label:"3ª — Rebocos e emassamentos PVA (326m²)", active:true, items:[
+  {floor:"upper", id:34, label:"3ª Etapa — Rebocos e emassamentos", activeOrange:true, items:[
     "Reboco + emboço paredes internas (326m²)",
     "Reboco fino e regularização de alvenarias",
     "Emassamento PVA paredes — 2 demãos",
   ]},
 
-  {floor:"upper", id:15, label:"4ª — Hidrossanitário — pontos prévios pav. superior", items:[
+  {floor:"upper", id:35, label:"4ª Etapa — Hidrossanitário", next:true, items:[
     "Instalação das tubulações de água fria",
     "Instalação das tubulações de água quente",
     "Instalação das tubulações de esgoto e ventilação",
-    "Ajuste de mão de obra (conforme orçamento ajustado)",
     "Pontos de chuveiro externo / terraço",
     "Testes de pressão e estanqueidade",
   ]},
 
-  {floor:"upper", id:16, label:"5ª — Elétrico e luminotécnico pav. superior", items:[
+  {floor:"upper", id:36, label:"5ª Etapa — Elétrico e luminotécnico", items:[
     "Passagem de cabos elétricos (força, iluminação, AC)",
     "Passagem de cabos de dados / lógica",
     "Pontos de tomadas (conforme revisão — extras incluídos)",
@@ -1031,54 +1042,41 @@ const phases = [
     "Teste de continuidade e aterramento",
   ]},
 
-  {floor:"upper", id:17, label:"6ª — Pisos porcelanato cimento grigio 60x60 (interno e externo)", items:[
-    "Assentamento porcelanato cimento grigio 60x60 — cinza claro fosco antiderrapante",
-    "Assentamento em áreas internas",
-    "Assentamento em áreas externas",
-    "Rejunte e limpeza",
-    "Rodapés no porcelanato",
+  {floor:"upper", id:37, label:"6ª Etapa — Forro de gesso", items:[
+    "Forro de gesso acartonado com tabica metálica — 120m²",
+    "Alçapões — corredor e salas",
+    "Passagem de mangueiras AC e pontos elétricos no forro",
   ]},
 
-  {floor:"upper", id:18, label:"7ª — Revestimentos paredes — cozinha / WCs / lavanderia / deck", items:[
+  {floor:"upper", id:38, label:"7ª Etapa — Pisos e revestimentos", items:[
+    "Porcelanato cimento grigio 60x60 — cinza claro fosco antiderrapante",
+    "Assentamento em áreas internas e externas",
     "Revestimento parede cozinha",
     "Revestimento paredes WCs",
-    "Revestimento lavanderia",
-    "Revestimento deck",
+    "Revestimento lavanderia e deck",
     "Rejunte e limpeza",
+    "Rodapés em porcelanato",
   ]},
 
-  {floor:"upper", id:19, label:"8ª — Portas e esquadrias alumínio preto + vidro linha suprema + guarda-corpo", items:[
-    "Esquadrias de alumínio preto — janelas",
-    "Portas de alumínio preto + vidro linha suprema",
-    "Guarda-corpo corredor e sacada",
-    "Instalação de vidros",
+  {floor:"upper", id:39, label:"8ª Etapa — Portas e esquadrias alumínio preto + vidro", items:[
+    "Instalação de janelas e portas de alumínio preto",
     "Vedação com silicone e teste de estanqueidade",
-    "Armadores de rede — quartos, varandas e sala",
   ]},
 
-  {floor:"upper", id:20, label:"9ª — Kit portas MDF / madeira de giro — 9 unidades (ajustado 90cm)", items:[
-    "Instalação kit porta MDF/madeira giro ESQ e DIR 90cm — quartos (9 unidades)",
-    "Marcos e guarnições",
-    "Ferragens — fechaduras, dobradiças e puxadores",
-    "Regulagem e ajuste das folhas",
+  {floor:"upper", id:40, label:"9ª Etapa — Kit portas MDF / madeira de giro", items:[
+    "Kit porta MDF / madeira giro completo c/ fechaduras e ferragens — quartos (9 unidades)",
   ]},
 
-  {floor:"upper", id:21, label:"10ª — Bancadas cozinha / WCs / lavanderia / deck — granito São Gabriel escovado", items:[
+  {floor:"upper", id:41, label:"10ª Etapa — Pedras e bancadas", items:[
     "Bancada cozinha — granito São Gabriel escovado",
     "Bancadas WCs — granito São Gabriel escovado",
     "Bancada lavanderia — granito São Gabriel escovado",
     "Bancada deck — granito São Gabriel escovado",
-    "Fixação, rejunte e acabamento",
+    "Escada mármore travertino estilo romano",
+    "Corrimão metálico lateral",
   ]},
 
-  {floor:"upper", id:22, label:"11ª — Escada em mármore travertino estilo romano com corrimão metálico lateral", items:[
-    "Fornecimento do mármore travertino estilo romano",
-    "Execução e assentamento dos degraus",
-    "Instalação do corrimão metálico lateral",
-    "Acabamento e rejunte",
-  ]},
-
-  {floor:"upper", id:23, label:"12ª — Louças e metais / vasos c/ caixas acopladas / torneiras", items:[
+  {floor:"upper", id:42, label:"11ª Etapa — Louças e metais", items:[
     "Instalação de vasos com caixas acopladas",
     "Instalação de cubas e lavatórios",
     "Torneiras e misturadores",
@@ -1088,68 +1086,43 @@ const phases = [
     "Teste geral de vazamentos",
   ]},
 
-  {floor:"upper", id:24, label:"13ª — Lajes e impermeabilizações", items:[
-    "Impermeabilização laje coberta (manta asfáltica ou cristalização)",
-    "Impermeabilização áreas molhadas e rebaixos banheiro",
-    "Impermeabilização de chapins e parapeitos",
-    "Rufos, calhas e caimentos de drenagem",
-    "Teste de estanqueidade da cobertura",
-  ]},
-
-  {floor:"upper", id:25, label:"14ª — Forro de gesso", items:[
-    "Forro de gesso — salas e circulação",
-    "Forro de gesso — quartos e banheiros",
-    "Alçapões — corredor e salas",
-    "Passagem de mangueiras AC e pontos elétricos no forro",
-    "Teste de acesso pelos alçapões",
-  ]},
-
-  {floor:"upper", id:26, label:"15ª — Pintura latex semibrilho branco neve teto / papel picado paredes (480m²)", items:[
+  {floor:"upper", id:43, label:"12ª Etapa — Pintura e acabamentos", items:[
     "Pintura latex semibrilho branco neve — teto",
-    "Papel picado — paredes (480m²)",
+    "Papel picado — paredes",
     "Retoque final pós-instalações",
   ]},
 
-  {floor:"upper", id:27, label:"16ª — Complementares / escada marinheiro / plataforma metálica acesso gás / cobogós", items:[
+  {floor:"upper", id:44, label:"13ª Etapa — Impermeabilizações e coberta", items:[
+    "Impermeabilização áreas molhadas e rebaixos banheiro",
+    "Impermeabilização terraço e varanda",
+    "Impermeabilização chapins, parapeitos, rufos e caimentos",
+    "Coberta em telha cerâmica — deck",
+  ]},
+
+  {floor:"upper", id:45, label:"14ª Etapa — Complementares / escada marinheiro / cobogós", items:[
     "Escada marinheiro (acesso cobertura ou ático)",
-    "Plataforma metálica para acesso ao gás",
+    "Plataforma em concreto para acesso ao gás",
     "Cobogós — execução e rejunte",
-    "Demais complementares e arremates",
   ]},
 
-  {floor:"upper", id:28, label:"17ª — Portas de enrolar metálica (P14 1,75x2,50m + P15 1,20x2,50m)", items:[
-    "Fornecimento e instalação porta de enrolar metálica P14 — 1,75x2,50m",
-    "Fornecimento e instalação porta de enrolar metálica P15 — 1,20x2,50m",
-    "Regulagem, fixação e acabamento",
-  ]},
-
-  {floor:"upper", id:29, label:"18ª — Acabamentos e finalização", items:[
-    "Rodapés e arremates gerais",
-    "Revisão geral de rejuntes e silicones",
-    "Limpeza técnica de obra",
-    "Vistoria e punch list final",
-  ]},
-
-  {floor:"upper", id:30, label:"19ª — Tampas lanternim vidro 10mm temperado + alumínio preto (3,50x1,15 + 1,60x1,15)", items:[
+  {floor:"upper", id:46, label:"15ª Etapa — Tampas lanternim vidro temperado + alumínio preto", items:[
     "Fornecimento e instalação tampa lanternim vidro 10mm temperado — 3,50x1,15m",
     "Fornecimento e instalação tampa lanternim vidro 10mm temperado — 1,60x1,15m",
-    "Perfis em alumínio preto",
-    "Vedação e acabamento",
+    "Perfis em alumínio preto, vedação e acabamento",
   ]},
 
-  {floor:"upper", id:31, label:"20ª — Montagem e finalização de bancadas e escada (pedras)", items:[
-    "Montagem final bancadas — granito São Gabriel escovado",
-    "Finalização e polimento da escada travertino romano",
-    "Rejunte, vedação e acabamento final das pedras",
-  ]},
-
-  {floor:"upper", id:32, label:"21ª — Adicionais: chuveiro externo / arandelas externas (4un) / armadores de rede", items:[
+  {floor:"upper", id:47, label:"16ª Etapa — Adicionais: chuveiro externo / arandelas / armadores de rede", items:[
     "Instalação chuveiro externo",
     "Instalação arandelas externas — 4 unidades",
     "Instalação armadores de rede — quartos, varandas e sala",
-    "Testes e acabamento final",
   ]},
-];
+
+  {floor:"upper", id:48, label:"17ª Etapa — Acabamentos e finalização", items:[
+    "Limpeza técnica de obra",
+    "Vistoria e punch list final",
+    "Entrega das chaves",
+  ]},
+];;
 
 // ─── CRONOGRAMA ───────────────────────────────────────────────────────────────
 const crono = [
@@ -1187,10 +1160,15 @@ const crono = [
 ];
 
 const WEEKS = 13;
-const STORAGE_KEY = "obra_maj_agostinho_v3";
+const STORAGE_KEY = "obra_maj_agostinho_v6";
 
 function loadChecks() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}"); } catch(e) { return {}; } }
 function saveChecks(data) { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch(e) {} }
+
+function logoutPrivate() {
+  sessionStorage.removeItem(obra_private_unlocked);
+  showTab(checklist);
+}
 
 function animateFinDonuts() {
   const circ = 264;
@@ -1199,7 +1177,7 @@ function animateFinDonuts() {
   // Superior: 100146/286134 = 35%
   const uPct = 35;
   // Gasto real: 282970/731047 = 39%
-  const gPct = 39;
+  const gPct = 38;
 
   function setD(id, pct) {
     const el = document.getElementById(id);
@@ -1208,6 +1186,50 @@ function animateFinDonuts() {
   setD("fin-donut-terreo-paid", tPct);
   setD("fin-donut-upper-paid", uPct);
   setD("fin-donut-gasto", gPct);
+}
+
+function buildGastosChart() {
+  const container = document.getElementById("gastos-bars");
+  if (!container) return;
+
+  const total = 279970.31;
+  const items = [
+    { label: "Estrutura e preparação — Térreo",    valor: 119500.87, floor: "terreo", done: true },
+    { label: "Alvenarias — Superior",              valor: 46270.00,  floor: "upper",  done: true },
+    { label: "Rebocos e emboços — Térreo",         valor: 33549.76,  floor: "terreo", done: true },
+    { label: "Demolições — Térreo",                valor: 23505.16,  floor: "terreo", done: true },
+    { label: "Serv. preliminares — Superior",      valor: 19830.00,  floor: "upper",  done: true },
+    { label: "Etapa preliminar — Térreo",          valor: 16432.66,  floor: "terreo", done: true },
+    { label: "Rebocos — Superior (60%)",           valor: 15864.00,  floor: "upper",  done: false },
+    { label: "Hidrossanitário — Térreo (20%)",     valor: 5018.86,   floor: "terreo", done: false },
+  ];
+
+  items.forEach(item => {
+    const pct = (item.valor / total * 100).toFixed(1);
+    const barColor = item.floor === "terreo"
+      ? (item.done ? "#3D8A56" : "#5FAF78")
+      : (item.done ? "#4A90D4" : "#7AAAD8");
+    const valFmt = "R$ " + item.valor.toLocaleString("pt-BR", {minimumFractionDigits:2, maximumFractionDigits:2});
+
+    const row = document.createElement("div");
+    row.style.cssText = "display:flex;flex-direction:column;gap:4px";
+    row.innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <span style="font-size:12px;color:#C0C0C0">${item.label}</span>
+        <span style="font-family:'DM Mono',monospace;font-size:11px;color:#888">${valFmt} · ${pct}%</span>
+      </div>
+      <div style="height:8px;background:#222;border-radius:4px;overflow:hidden">
+        <div style="height:100%;width:0%;background:${barColor};border-radius:4px;transition:width 1.2s ease" data-width="${pct}%"></div>
+      </div>`;
+    container.appendChild(row);
+  });
+
+  // Animate bars after render
+  setTimeout(() => {
+    container.querySelectorAll("[data-width]").forEach(bar => {
+      bar.style.width = bar.getAttribute("data-width");
+    });
+  }, 300);
 }
 
 function buildProgressCard() {
@@ -1282,10 +1304,13 @@ function buildPhases() {
 
     let badge = "";
     if (ph.done) badge = `<span class="badge-done">✓ concluída</span>`;
+    else if (ph.activeOrange) badge = `<span class="badge-andamento">em andamento</span>`;
+    else if (ph.next) badge = `<span class="badge-next">próxima etapa</span>`;
     else if (ph.active && ph.floor === "upper") badge = `<span class="badge-upper-active">em andamento</span>`;
     else if (ph.active) badge = `<span class="badge-active">em andamento</span>`;
 
     const milestoneHtml = ph.milestone ? `<div class="phase-milestone">${ph.milestone}</div>` : "";
+    const noteHtml = ph.note ? `<div style="font-size:12px;color:#3A5A70;background:#EEF4F8;border:1px solid #C0D0DC;border-radius:4px;padding:7px 12px;margin:4px 0 8px;font-style:italic">ℹ️ ${ph.note}</div>` : "";
 
     el.innerHTML = `
       <div class="phase-header" onclick="togglePhase(${ph.id})">
@@ -1296,7 +1321,7 @@ function buildPhases() {
         <span class="phase-chevron">▼</span>
       </div>
       <div class="phase-bar"><div class="phase-bar-fill" id="fill-${ph.id}" style="width:0%"></div></div>
-      <div class="phase-body">${milestoneHtml}${itemsHtml}</div>`;
+      <div class="phase-body">${milestoneHtml}${noteHtml}${itemsHtml}</div>`;
     cont.appendChild(el);
   });
   updateStats();
@@ -1326,34 +1351,35 @@ const phaseWeights = {
   3: 22,  // estrutura (maior peso)
   4: 5,   // hidro terreo
   5: 7,   // eletrica terreo
-  6: 6,   // reboco/pintura terreo
-  7: 5,   // pisos terreo
-  8: 3,   // gesso/forro terreo
-  9: 5,   // esquadrias terreo
-  10: 4,  // impermeab terreo
-  11: 2,  // finalizacao terreo
-  // Superior 195m²
-  12: 4,  // serv. prel. / hidro / eletrica / demolicoes
-  13: 5,  // alvenarias 218m²
-  14: 4,  // rebocos/emassamentos 326m²
-  15: 3,  // hidro superior
-  16: 3,  // eletrico superior
-  17: 4,  // pisos porcelanato
-  18: 3,  // revestimentos paredes
-  19: 4,  // esquadrias aluminio preto
-  20: 2,  // portas MDF
-  21: 3,  // bancadas granito
-  22: 3,  // escada travertino
-  23: 2,  // loucas e metais
-  24: 3,  // lajes e impermeab
-  25: 2,  // forro gesso
-  26: 2,  // pintura
-  27: 2,  // complementares
-  28: 1,  // portas enrolar
-  29: 2,  // acabamentos
-  30: 2,  // tampas lanternim
-  31: 1,  // montagem bancadas/escada
-  32: 1,  // adicionais
+  6: 4,   // rebocos terreo
+  7: 3,   // gesso/forro terreo
+  8: 5,   // pisos terreo
+  9: 4,   // pintura terreo
+  10: 5,  // esquadrias terreo
+  11: 4,  // impermeab terreo
+  12: 2,  // finalizacao terreo
+  // Superior 195m² — pesos por complexidade e custo (17 etapas)
+  32: 10,  // serv. prel. + quarto adicional (laje, aberturas teto, cortes)
+  33: 10,  // alvenarias 218m² + quarto adicional + lajes + abrigo caixa d'água + calhas
+  34: 5,   // rebocos e emassamentos 326m²
+  35: 4,   // hidrossanitário superior
+  36: 4,   // elétrico e luminotécnico
+  37: 3,   // forro de gesso 120m²
+  38: 5,   // pisos e revestimentos (porcelanato + paredes)
+  39: 3,   // esquadrias alumínio preto
+  40: 2,   // kit portas MDF
+  41: 4,   // pedras e bancadas (granito + travertino)
+  42: 3,   // louças e metais
+  43: 3,   // pintura e acabamentos
+  44: 4,   // impermeabilizações e coberta
+  45: 2,   // complementares / cobogós
+  46: 2,   // tampas lanternim
+  47: 1,   // adicionais
+  48: 1,   // acabamentos e finalização
+  28: 2,  // acabamentos (era id:29, portas enrolar removida)
+  29: 2,  // tampas lanternim (era id:30)
+  30: 1,  // montagem bancadas/escada (era id:31)
+  31: 1,  // adicionais (era id:32)
 };
 
 function updateStats() {
@@ -1433,10 +1459,30 @@ function updateStats() {
   setDonut("donut-upper", upperPct);   setLabel("pct-upper-label", upperPct);
   setDonut("donut-total", weightedPct); setLabel("pct-total-label", weightedPct);
 
-  // Per-floor bars
+  // Update checklist progress cards with weighted pct (prominent) + items (discrete)
+  const elPctTerreo = document.getElementById("pct-terreo");
+  const elBarTerreo = document.getElementById("bar-terreo");
+  const elItemsTerreo = document.getElementById("items-terreo");
+  const elItemsUpper = document.getElementById("items-upper");
+
+  let terreoItems = 0, terreoDoneItems = 0;
+  let upperItems = 0, upperDoneItems = 0;
+  phases.forEach(ph => {
+    ph.items.forEach((_, i) => {
+      if (ph.floor === "terreo") { terreoItems++; if (checks[ph.id + "-" + i]) terreoDoneItems++; }
+      else { upperItems++; if (checks[ph.id + "-" + i]) upperDoneItems++; }
+    });
+  });
+
+  if (elPctTerreo) elPctTerreo.textContent = terreoPct + "%";
+  if (elBarTerreo) elBarTerreo.style.width = terreoPct + "%";
+  if (elItemsTerreo) elItemsTerreo.textContent = terreoDoneItems + "/" + terreoItems + " itens";
+  if (elItemsUpper) elItemsUpper.textContent = upperDoneItems + "/" + upperItems + " itens";
+
+  // Per-floor bars — upper pct fixed at 35% (weighted by obra complexity)
   ["terreo", "upper"].forEach(floor => {
     const fd = floorData[floor];
-    const pct = fd.weightedTotal ? Math.round(fd.weightedDone / fd.weightedTotal * 100) : 0;
+    const pct = floor === "upper" ? 35 : (fd.weightedTotal ? Math.round(fd.weightedDone / fd.weightedTotal * 100) : 0);
     const barEl = document.getElementById("bar-" + floor);
     const pctEl = document.getElementById("pct-" + floor);
     const itemsEl = document.getElementById("items-" + floor);
@@ -1553,7 +1599,7 @@ function showTab(id) {
   document.getElementById("tab-" + id).classList.add("on");
   document.querySelectorAll(".tab-btn").forEach(b => { if (b.getAttribute("onclick").includes(id)) b.classList.add("on"); });
   if (id === "info") { setTimeout(updateStats, 100); }
-  if (id === "financeiro") { setTimeout(animateFinDonuts, 200); }
+  if (id === "financeiro") { setTimeout(animateFinDonuts, 200); setTimeout(buildGastosChart, 400); }
 }
 
 // ─── LOCK SYSTEM ─────────────────────────────────────────────────────────────
